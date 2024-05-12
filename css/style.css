@@ -55,6 +55,11 @@
     align-items: center;
 }
 
+.container_header a{
+    color: white;
+    text-decoration: none;
+}
+
 .icone_logo {
     height: 45px;
     width: 45px;
