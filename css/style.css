@@ -17,6 +17,16 @@
 }
 
 @font-face {
+    font-family: BeaufortItalic;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-Italic.ttf);
+}
+
+@font-face {
+    font-family: BeaufortBoldItalic;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-BoldItalic.ttf);
+}
+
+@font-face {
     font-family: Spiegel;
     src: url(../src/font/Spiegel-TTF/Spiegel_TT_Regular.ttf);
 }
@@ -86,7 +96,7 @@
     align-self: flex-start;
 }
 
-.imagem_topo img{
+.imagem_topo img {
     height: 437px;
     width: 890px;
 }
@@ -107,7 +117,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 60px;
+    padding: 0 90px;
 }
 
 .container_img_mundo {
@@ -147,7 +157,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 60px;
+    padding: 0 90px;
 }
 
 .container_img_ods {
@@ -155,4 +165,146 @@
     background-image: url(../src/img/Imagem_ods.png);
     background-repeat: repeat-x;
     background-position: center;
+}
+
+/* Personagens */
+
+.container_personagens {
+    background-color: #1E1E1E;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container_titulo_personagens {
+    font-family: BeaufortBold;
+    font-size: 60px;
+    padding-left: 30px;
+}
+
+
+.container_imagens_lanes_personagens {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-right: 50px;
+}
+
+.container_imagens_lanes_personagens img {
+    margin: 0 35px;
+}
+
+.container_imagens_personagens {
+    height: 625px;
+    background-color: #1E1E1E;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.imagem_maokai {
+    height: 537px;
+    width: 50%;
+    background-image: url(../src/img/Maokai_0.jpg);
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+}
+
+.imagem_ivern {
+    height: 537px;
+    width: 50%;
+    background-image: url(../src/img/Ivern_0.jpg);
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+}
+
+.titulo_personagens {
+    color: white;
+    font-family: BeaufortBoldItalic;
+    font-size: 30px;
+}
+
+.texto_personagens {
+    color: white;
+    font-family: BeaufortBoldItalic;
+    font-size: 100px;
+}
+
+/* Texto dos Personagens */
+
+.container_texto_personagens {
+    height: 500px;
+    color: black;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 90px;
+}
+
+.container_texto_personagens p{
+    margin: 0 35px;
+}
+
+.titulo_personagens_texto {
+    font-size: 40px;
+    font-family: BeaufortBoldItalic;
+}
+
+.conteudo_personagens_texto {
+    font-size: 22px;
+    font-family: Beaufort;
+}
+
+/* Rodapé */
+
+.linha {
+    height: 20px;
+    background-color: #1E1E1E;
+}
+
+.container_footer {
+    background-color: #091428;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+}
+
+.footer li {
+    margin-left: 100px;
+}
+
+.titulo_footer {
+    color: white;
+    font-family: SpiegelBold;
+    font-size: 27px;
+}
+
+.texto_footer {
+    color: white;
+    font-family: Spiegel;
+    font-size: 22px;
+}
+
+.footer li img{
+    padding-top: 10px;
+    width: 45px;
 }
