@@ -8,12 +8,22 @@
 
 @font-face {
     font-family: Beaufort;
-    src: url(src\font\BeaufortForLoL-OTF\BeaufortforLOL-Regular.otf);
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-Regular.ttf);
 }
 
 @font-face {
     font-family: BeaufortBold;
-    src: url(src\font\BeaufortForLoL-OTF\BeaufortforLOL-Bold.otf);
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-Bold.ttf);
+}
+
+@font-face {
+    font-family: Spiegel;
+    src: url(../src/font/Spiegel-TTF/Spiegel_TT_Regular.ttf);
+}
+
+@font-face {
+    font-family: SpiegelBold;
+    src: url(../src/font/Spiegel-TTF/Spiegel_TT_Bold.ttf);
 }
 
 
@@ -48,8 +58,100 @@
 .navbar li {
     margin-left: 40px;
     font-size: 22px;
-    font-family: BeaufortBold, sans-serif;
+    font-family: SpiegelBold;
 }
 
 /* Banner do Topo */
 
+.banner_topo {
+    height: 615px;
+    background-image: url(../src/img/Banner_Topo.png);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.elementos_topo {
+    width: 890px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container_banner_topo {
+    color: #F4BB72;
+    font-family: BeaufortBold;
+    font-size: 30px;
+    align-self: flex-start;
+}
+
+.imagem_topo img{
+    height: 437px;
+    width: 890px;
+}
+
+/* O Mundo */
+
+.container_mundo {
+    display: flex;
+    flex-direction: row;
+    height: 695px;
+    color: #F4BB72;
+}
+
+.container_texto_mundo {
+    width: 50%;
+    background-color: #1E1E1E;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 60px;
+}
+
+.container_img_mundo {
+    width: 50%;
+    background-image: url(../src/img/Imagem_Mundo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Textos do Meio do Site */
+
+.titulo_meio {
+    font-family: BeaufortBold;
+    font-size: 40px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+}
+
+.texto_meio {
+    font-family: Spiegel;
+    font-size: 18px;
+}
+
+/* As ODS da ONU */
+
+.container_ods {
+    display: flex;
+    flex-direction: row;
+    height: 695px;
+    color: #F4BB72;
+}
+
+.container_texto_ods {
+    width: 50%;
+    background-color: #091428;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 60px;
+}
+
+.container_img_ods {
+    width: 50%;
+    background-image: url(../src/img/Imagem_ods.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
