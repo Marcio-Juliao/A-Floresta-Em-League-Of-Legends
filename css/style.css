@@ -66,6 +66,7 @@
 .banner_topo {
     height: 615px;
     background-image: url(../src/img/Banner_Topo.png);
+    background-position: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -152,6 +153,6 @@
 .container_img_ods {
     width: 50%;
     background-image: url(../src/img/Imagem_ods.png);
-    background-repeat: no-repeat;
+    background-repeat: repeat-x;
     background-position: center;
 }
