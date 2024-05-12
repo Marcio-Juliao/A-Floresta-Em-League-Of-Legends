@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Declaração de Fontes */
+
+@font-face {
+    font-family: Beaufort;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-Regular.ttf);
+}
+
+@font-face {
+    font-family: BeaufortBold;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-Bold.ttf);
+}
+
+@font-face {
+    font-family: BeaufortItalic;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-Italic.ttf);
+}
+
+@font-face {
+    font-family: BeaufortBoldItalic;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-BoldItalic.ttf);
+}
+
+@font-face {
+    font-family: Spiegel;
+    src: url(../src/font/Spiegel-TTF/Spiegel_TT_Regular.ttf);
+}
+
+@font-face {
+    font-family: SpiegelBold;
+    src: url(../src/font/Spiegel-TTF/Spiegel_TT_Bold.ttf);
+}
+
+/* Elementos do Topo */
+
+.banner_topo {
+    height: 695px;
+    background-image: url(../src/img/Banner_Saiba_Mais.png);
+    background-position: center;
+}
+
+.elementos_topo {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container_banner_topo {
+    font-size: 120px;
+    color: #F4BB72;
+    font-family: BeaufortBoldItalic;
+
+}
+
+/* Elementos do Meio */
+
+.container_texto_meio {
+    font-family: Spiegel;
+    font-size: 22px;
+    background-color: #1E1E1E;
+    color: #F4BB72;
+    height: 695px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 90px 90px;
+}

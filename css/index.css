@@ -37,51 +37,14 @@
 }
 
 
-/* Header e Navbar */
-
-.header {
-    width: 100%;
-    height: 80px;
-    background-color: #1E1E1E;
-    color: white;
-}
-
-.container_header {
-    display: flex;
-    width: 97%;
-    height: 100%;
-    margin: auto;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.container_header a{
-    color: white;
-    text-decoration: none;
-}
-
-.icone_logo {
-    height: 45px;
-    width: 45px;
-}
-
-.navbar {
-    display: flex;
-    list-style: none;
-}
-
-.navbar li {
-    margin-left: 40px;
-    font-size: 22px;
-    font-family: SpiegelBold;
-}
-
 /* Banner do Topo */
 
 .banner_topo {
     height: 615px;
     background-image: url(../src/img/Banner_Topo.png);
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -137,13 +100,14 @@
 .titulo_meio {
     font-family: BeaufortBold;
     font-size: 40px;
-    padding-top: 40px;
+    padding-top: 20px;
     padding-bottom: 20px;
 }
 
 .texto_meio {
     font-family: Spiegel;
     font-size: 18px;
+    padding-bottom: 20px;
 }
 
 /* As ODS da ONU */
@@ -168,7 +132,8 @@
 .container_img_ods {
     width: 50%;
     background-image: url(../src/img/Imagem_ods.png);
-    background-repeat: repeat-x;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-position: center;
 }
 
@@ -259,6 +224,8 @@
 
 .container_texto_personagens p{
     margin: 0 35px;
+    width: 800px;
+    height: 100%;
 }
 
 .titulo_personagens_texto {
@@ -269,47 +236,4 @@
 .conteudo_personagens_texto {
     font-size: 22px;
     font-family: Beaufort;
-}
-
-/* Rodapé */
-
-.linha {
-    height: 20px;
-    background-color: #1E1E1E;
-}
-
-.container_footer {
-    background-color: #091428;
-    height: 200px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.footer {
-    display: flex;
-    justify-content: space-between;
-    list-style: none;
-}
-
-.footer li {
-    margin-left: 100px;
-}
-
-.titulo_footer {
-    color: white;
-    font-family: SpiegelBold;
-    font-size: 27px;
-}
-
-.texto_footer {
-    color: white;
-    font-family: Spiegel;
-    font-size: 22px;
-}
-
-.footer li img{
-    padding-top: 10px;
-    width: 45px;
 }
