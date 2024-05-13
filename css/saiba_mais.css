@@ -42,6 +42,8 @@
     height: 695px;
     background-image: url(../src/img/Banner_Saiba_Mais.png);
     background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .elementos_topo {

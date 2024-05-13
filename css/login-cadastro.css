@@ -35,3 +35,47 @@
     font-family: SpiegelBold;
     src: url(../src/font/Spiegel-TTF/Spiegel_TT_Bold.ttf);
 }
+
+/* Cadastro e Formulário */
+
+.container_cadastro {
+    width: 100%;
+}
+
+.banner_cadastro {
+    height: 895px;
+    width: 100%;
+    background-image: url(../src/img/Banner_Cadastro.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.card_cadastro {
+    margin-left: 3%;
+    height: 750px;
+    width: 30%;
+    background-color: #091428;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card_dentro_cadastro {
+    background-color: white;
+    height: 90%;
+    width: 90%;
+    font-family: BeaufortBold;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo_formulario {
+    font-size: 40px;
+}

@@ -160,10 +160,15 @@
     flex-direction: row;
     justify-content: space-evenly;
     padding-right: 50px;
+    margin: 0 150px;
+}
+
+.espacador {
+    width: 250px;
 }
 
 .container_imagens_lanes_personagens img {
-    margin: 0 35px;
+    margin: 0 50px;
 }
 
 .container_imagens_personagens {
