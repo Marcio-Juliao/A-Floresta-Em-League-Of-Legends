@@ -37,22 +37,22 @@
         <div class="banner_cadastro">
             <div class="card_cadastro">
                 <div class="card_dentro_cadastro">
-                    <div class="formulario_cadastro">
-                        <form action="post">
-                            <label for="" class="titulo_formulario">Cadastre-se</label>
-                            <br>
-                            <label for="cadastro">Nome de usuário:</label>
-                            <br>
-                            <input type="text" id="input_nome">
-                            <br>
-                            <label for="input_senha">Senha:</label>
-                            <br>
-                            <input type="password" id="input_senha">
-                            <br>
-                            <label for="input_repetir_senha">Repetir Senha:</label>
-                            <br>
-                            <input type="password" id="input_repetir_senha">
-                        </form>
+                    <div class="campos_cadastro">
+                        <div class="titulo_cadastro">Cadastre-se</div>
+                        <div class="texto_cadastro">Nome de usuário</div>
+                        <input type="text" id="input_nome" class="inputs_cadastro">
+                        <div class="texto_cadastro">Email</div>
+                        <input type="text" id="input_email" class="inputs_cadastro">
+                        <div class="texto_cadastro">Senha</div>
+                        <input type="password" id="input_senha" class="inputs_cadastro">
+                        <div class="texto_cadastro">Repita a senha</div>
+                        <input type="password" id="input_repetir_senha" class="inputs_cadastro">
+                        <div class="texto_cadastro">Você Já Jogou League Of Legends Antes?</div>
+                        <div class="cadastro_radio">
+                            <input type="radio" name="input_radio" id="input_radio_sim" value="1"> Sim
+                            <input type="radio" name="input_radio" id="input_radio_nao" value="0"> Não
+                        </div>
+                        <button id="botao_cadastro" class="botao_cadastro" onclick="botao_cadastrar()">Cadastrar</button>
                     </div>
                 </div>
             </div>

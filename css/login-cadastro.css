@@ -36,7 +36,7 @@
     src: url(../src/font/Spiegel-TTF/Spiegel_TT_Bold.ttf);
 }
 
-/* Cadastro e Formulário */
+/* Cadastro */
 
 .container_cadastro {
     width: 100%;
@@ -76,6 +76,52 @@
     justify-content: center;
 }
 
-.titulo_formulario {
-    font-size: 40px;
+.card_dentro_cadastro input{
+    width: 300px;
+    height: 30px;
+}
+
+.campos_cadastro {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+.titulo_cadastro {
+    font-size: 60px;
+    margin-top: 10%;
+}
+
+.texto_cadastro {
+    margin-top: 2%;
+    font-size: 22px;
+}
+
+.cadastro_radio {    
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.botao_cadastro {
+    margin-top: 4%;
+    margin-bottom: 4%;
+    height: 100px;
+    width: 200px;
+    background-color: #091428; 
+    border: none;
+    color: white;
+    padding: 15px 32px; text-align: center;
+    text-decoration: none;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    font-family: BeaufortBold;
+    font-size: 30px;     
+    border-radius: 5px;
 }
