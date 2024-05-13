@@ -49,10 +49,11 @@
                         <input type="password" id="input_repetir_senha" class="inputs_cadastro">
                         <div class="texto_cadastro">Você Já Jogou League Of Legends Antes?</div>
                         <div class="cadastro_radio">
-                            <input type="radio" name="input_radio" id="input_radio_sim" value="1"> Sim
-                            <input type="radio" name="input_radio" id="input_radio_nao" value="0"> Não
+                            <input type="radio" name="input_radio" id="input_radio" value="1"> Sim
+                            <input type="radio" name="input_radio" id="input_radio" value="0"> Não
                         </div>
-                        <button id="botao_cadastro" class="botao_cadastro" onclick="botao_cadastrar()">Cadastrar</button>
+                        <button id="botao_cadastro" class="botao_cadastro"
+                            onclick="botao_cadastrar()">Cadastrar</button>
                     </div>
                 </div>
             </div>
@@ -87,3 +88,37 @@
 </body>
 
 </html>
+
+<script>
+
+    function botao_cadastrar() {
+        var inputEmail = document.getElementById('input_email').value;
+        var inputNome = document.getElementById('input_nome').value;
+        var inputSenha = document.getElementById('input_senha').value;
+        var inputRepetirSenha = document.getElementById('input_repetir_senha').value;
+        var inputJogouLOL = document.querySelector('input[name="input_radio"]:checked');
+
+        if (inputNome == "") {
+            alert("Preencha o campo de Nome de Usuário");
+        }
+
+        if (inputEmail == "") {
+            alert("Preencha o campo de Email");
+        }
+
+        if (inputSenha == "") {
+            alert("Preencha o campo de Senha");
+        }
+
+        if (inputRepetirSenha == "") {
+            alert("Repita a Senha");
+        }
+
+
+        if (inputJogouLOL == null) {
+            alert("Responda a pergunta");
+        }
+
+    }
+
+</script>
