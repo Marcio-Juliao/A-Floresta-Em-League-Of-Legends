@@ -35,3 +35,76 @@
     font-family: SpiegelBold;
     src: url(../src/font/Spiegel-TTF/Spiegel_TT_Bold.ttf);
 }
+
+/* Quiz */
+
+/* quiz */
+
+.container_quiz {
+    width: 100%;
+}
+
+.banner_quiz {
+    height: 895px;
+    width: 100%;
+    background-image: url(../src/img/Banner_Estatisticas.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card_iniciar_quiz {
+    margin-left: 3%;
+    height: 350px;
+    width: 30%;
+    background-color: #091428;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+
+.titulo_iniciar_quiz {
+    font-size: 60px;
+    font-family: BeaufortBoldItalic;
+    color: #F4BB72;
+    margin-top: 10%;
+}
+
+.texto_iniciar_quiz {
+    margin-top: 1%;
+    font-size: 22px;
+    color: aquamarine;
+    font-family: BeaufortBoldItalic;
+}
+
+.grafico1_iniciar_quiz {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5%;
+    margin-bottom: 10%;
+}
+
+.botao_iniciar_quiz {
+    margin-top: 4%;
+    margin-bottom: 10%;
+    height: 75px;
+    width: 200px;
+    background-color: #F4BB72;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    font-family: BeaufortBold;
+    font-size: 30px;
+    border-radius: 5px;
+}

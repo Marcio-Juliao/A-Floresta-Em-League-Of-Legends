@@ -62,6 +62,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-radius: 3px;
 }
 
 .titulo_estatisticas {
@@ -105,6 +106,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    border-radius: 3px;
 }
 
 .titulo_ranking {
