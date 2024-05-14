@@ -35,3 +35,94 @@
     font-family: SpiegelBold;
     src: url(../src/font/Spiegel-TTF/Spiegel_TT_Bold.ttf);
 }
+
+/* estatisticas */
+
+.container_estatisticas {
+    width: 100%;
+}
+
+.banner_estatisticas {
+    height: 895px;
+    width: 100%;
+    background-image: url(../src/img/Banner_Estatisticas.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.card_estatisticas {
+    margin-left: 3%;
+    height: 750px;
+    width: 30%;
+    background-color: #091428;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card_dentro_estatisticas {
+    background-color: white;
+    height: 90%;
+    width: 90%;
+    font-family: BeaufortBold;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card_dentro_estatisticas input {
+    width: 300px;
+    height: 30px;
+}
+
+.campos_estatisticas {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+.titulo_estatisticas {
+    font-size: 60px;
+    margin-top: 10%;
+}
+
+.texto_estatisticas {
+    margin-top: 2%;
+    font-size: 22px;
+}
+
+.estatisticas_radio {
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.botao_estatisticas {
+    margin-top: 4%;
+    margin-bottom: 4%;
+    height: 75px;
+    width: 200px;
+    background-color: #091428;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: BeaufortBold;
+    font-size: 30px;
+    border-radius: 5px;
+}
