@@ -36,7 +36,7 @@
     src: url(../src/font/Spiegel-TTF/Spiegel_TT_Bold.ttf);
 }
 
-/* estatisticas */
+/* Estatisticas */
 
 .container_estatisticas {
     width: 100%;
@@ -56,7 +56,7 @@
 .card_estatisticas {
     margin-left: 3%;
     height: 750px;
-    width: 30%;
+    width: 40%;
     background-color: #091428;
     display: flex;
     flex-direction: column;
@@ -64,34 +64,10 @@
     justify-content: center;
 }
 
-.card_dentro_estatisticas {
-    background-color: white;
-    height: 90%;
-    width: 90%;
-    font-family: BeaufortBold;
-    color: black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.card_dentro_estatisticas input {
-    width: 300px;
-    height: 30px;
-}
-
-.campos_estatisticas {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: start;
-}
-
 .titulo_estatisticas {
     font-size: 60px;
+    font-family: BeaufortBoldItalic;
+    color: #F4BB72;
     margin-top: 10%;
 }
 
@@ -100,29 +76,78 @@
     font-size: 22px;
 }
 
-.estatisticas_radio {
-    margin-top: 2%;
+.grafico1_estatisticas {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    padding: 5%;
+    margin-bottom: 10%;
 }
 
-.botao_estatisticas {
-    margin-top: 4%;
-    margin-bottom: 4%;
-    height: 75px;
-    width: 200px;
-    background-color: #091428;
-    border: none;
-    color: white;
-    padding: 15px 32px;
+.titulo_grafico {
+    font-family: BeaufortBoldItalic;
+    color: #F4BB72;
+    font-size: 30px;
     text-align: center;
-    text-decoration: none;
+    margin-top: 5%;
+}
+
+
+.card_ranking {
+    margin-left: 15%;
+    margin-right: 3%;
+    height: 750px;
+    width: 40%;
+    background-color: rgb(9, 20, 40, 0.5);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: BeaufortBold;
-    font-size: 30px;
-    border-radius: 5px;
+    position: relative;
 }
+
+.titulo_ranking {
+    font-size: 60px;
+    font-family: BeaufortBoldItalic;
+    color: #F4BB72;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container_ranking {
+    margin-top: 17%;
+    height: 100%;
+    width: 90%;
+    overflow-y: auto;
+    padding-left: 10px;
+}
+
+.container_ranking::-webkit-scrollbar {
+    width: 5px;
+}
+
+.container_ranking::-webkit-scrollbar-thumb {
+    background-color: #F4BB72;
+    border-radius: 3px;
+}
+
+.usuario_ranking {
+    margin-top: 2%;
+    height: 60px;
+    width: 650px;
+    background-color: #091428;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    color: #F4BB72;
+    font-family: BeaufortBoldItalic;
+    font-size: 22px;
+    padding-left: 4%;
+}
+
+

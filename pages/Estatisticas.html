@@ -3,11 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <title>Ranking - A Floresta em League Of Legends</title>
     <link rel="shortcut icon" href="../src/img/LoL_Icon_Flat_GOLD.png" type="image/x-icon">
     <link rel="stylesheet" href="../css/estatisticas.css">
     <link rel="stylesheet" href="../css/navbar-footer.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -35,28 +36,33 @@
     <div class="container_estatisticas">
         <div class="banner_estatisticas">
             <div class="card_estatisticas">
-                <div class="card_dentro_estatisticas">
-                    <div class="campos_estatisticas">
-                        <div class="titulo_estatisticas">Cadastre-se</div>
-                        <div class="texto_estatisticas">Nome de usuário</div>
-                        <input type="text" id="input_nome" class="inputs_estatisticas">
-                        <div class="texto_estatisticas">Email</div>
-                        <input type="text" id="input_email" class="inputs_estatisticas">
-                        <div class="texto_estatisticas">Senha</div>
-                        <input type="password" id="input_senha" class="inputs_estatisticas">
-                        <div class="texto_estatisticas">Repita a senha</div>
-                        <input type="password" id="input_repetir_senha" class="inputs_estatisticas">
-                        <div class="texto_estatisticas">Você Já Jogou League Of Legends Antes?</div>
-                        <div class="estatisticas_radio">
-                            <input type="radio" name="input_radio" id="input_radio" value="S"> Sim
-                            <input type="radio" name="input_radio" id="input_radio" value="N"> Não
-                        </div>
-                        <button id="botao_estatisticas" class="botao_estatisticas"
-                            onclick="botao_cadastrar()">Cadastrar</button>
-                    </div>
+                <p class="titulo_estatisticas">Estatísticas Gerais</p>
+                <div class="container_estatisticas">
+                    <p class="titulo_grafico">
+                        Proporção de Jogadores e Não Jogadores
+                    </p>
+                    <canvas id="GraficoBarras" class="grafico1_estatisticas"></canvas>
+                </div>
+            </div>
+            <div class="card_ranking">
+                <p class="titulo_ranking">Ranking Geral</p>
+                <div class="container_ranking">
+                    <div class="usuario_ranking"><span style="justify-self: flex-start;">1º Lugar</span>Usuário:<span
+                            style="color: aquamarine; margin-left: -50px;">Razar#Viego</span> Acertos: 15/15</div>
+                    <div class="usuario_ranking"></div>
+                    <div class="usuario_ranking"></div>
+                    <div class="usuario_ranking"></div>
+                    <div class="usuario_ranking"></div>
+                    <div class="usuario_ranking"></div>
+                    <div class="usuario_ranking"></div>
+                    <div class="usuario_ranking"></div>
+                    <div class="usuario_ranking"></div>
+                    <div class="usuario_ranking"></div>
+                    <div class="usuario_ranking"></div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <div class="linha"></div>
     <div class="div_footer">
@@ -87,3 +93,29 @@
 </body>
 
 </html>
+
+<script>
+
+    const GraficoBarras = document.getElementById('GraficoBarras');
+
+    new Chart(GraficoBarras, {
+        type: 'pie',
+        data: {
+            labels: ['Já Jogou', 'Nunca Jogou'],
+            datasets: [{
+                label: 'Usuários',
+                data: [70, 30],
+                backgroundColor: ['rgba(54, 162, 235, 0.7)', 'rgba(255, 99, 132, 0.7)'],
+                borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
+                borderWidth: 0.5
+            }]
+        },
+        options: {
+            aspectRatio: 1.5
+        }
+
+    });
+
+
+
+</script>
