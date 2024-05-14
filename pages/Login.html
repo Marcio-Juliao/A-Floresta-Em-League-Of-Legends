@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,16 +9,26 @@
     <link rel="stylesheet" href="../css/login-cadastro.css">
     <link rel="stylesheet" href="../css/navbar-footer.css">
 </head>
+
 <body>
     <div class="header">
         <div class="container_header">
             <a href="./index.html"><img src="../src/img/LoL_Icon_Flat_GOLD.svg" class="icone_logo"></a>
             <ul class="navbar">
-                <a href="./Saiba_Mais.html"><li>Saiba Mais</li></a>
-                <a href="./Quiz.html"><li>Quiz</li></a>
-                <a href="./Ranking.html"><li>Ranking</li></a>
-                <a href="./Login.html"><li>Login</li></a>
-                <a href="./Cadastrar.html"><li>Cadastrar</li></a>
+                <a href="./Saiba_Mais.html">
+                    <li>Saiba Mais</li>
+                </a>
+                <a href="./Quiz.html">
+                    <li>Quiz</li>
+                </a>
+                <a href="./Estatisticas.html">
+                    <li>Estatísticas</li>
+                    <a href="./Login.html">
+                        <li>Login</li>
+                    </a>
+                    <a href="./Cadastrar.html">
+                        <li>Cadastrar</li>
+                    </a>
             </ul>
         </div>
     </div>
@@ -64,20 +75,23 @@
         </div>
     </div>
 </body>
+
 </html>
 
 <script>
+    var inputSenha = "";
+    var inputEmail = "";
 
     function botao_entrar() {
-        var inputEmail = input_email.value;
-        var inputSenha = input_senha.value;
 
-        if (inputEmail == "") {
+        if (input_email.value == "") {
             alert("Preencha o campo de Email");
+            inputEmail = input_email.value;
         }
-        
-        if (inputSenha == "") {
+
+        if (input_senha.value == "") {
             alert("Preencha o campo de Senha");
+            inputSenha = input_senha.value;
         }
     }
 

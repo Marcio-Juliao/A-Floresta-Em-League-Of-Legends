@@ -21,8 +21,8 @@
                 <a href="./Quiz.html">
                     <li>Quiz</li>
                 </a>
-                <a href="./Ranking.html">
-                    <li>Ranking</li>
+                <a href="./Estatisticas.html">
+                    <li>Estatísticas</li>
                 </a>
                 <a href="./Login.html">
                     <li>Login</li>
@@ -49,8 +49,8 @@
                         <input type="password" id="input_repetir_senha" class="inputs_cadastro">
                         <div class="texto_cadastro">Você Já Jogou League Of Legends Antes?</div>
                         <div class="cadastro_radio">
-                            <input type="radio" name="input_radio" id="input_radio" value="1"> Sim
-                            <input type="radio" name="input_radio" id="input_radio" value="0"> Não
+                            <input type="radio" name="input_radio" id="input_radio" value="S"> Sim
+                            <input type="radio" name="input_radio" id="input_radio" value="N"> Não
                         </div>
                         <button id="botao_cadastro" class="botao_cadastro"
                             onclick="botao_cadastrar()">Cadastrar</button>
@@ -91,32 +91,42 @@
 
 <script>
 
+    var inputEmail = "";
+    var inputNome = "";
+    var inputSenha = "";
+    var inputRepetirSenha = "";
+    var inputJogouLOL = "";
+
     function botao_cadastrar() {
-        var inputEmail = document.getElementById('input_email').value;
-        var inputNome = document.getElementById('input_nome').value;
-        var inputSenha = document.getElementById('input_senha').value;
-        var inputRepetirSenha = document.getElementById('input_repetir_senha').value;
-        var inputJogouLOL = document.querySelector('input[name="input_radio"]:checked');
 
-        if (inputNome == "") {
+        inputJogouLOL = document.querySelector('input[name="input_radio"]:checked');
+
+        if (input_nome.value == "") {
             alert("Preencha o campo de Nome de Usuário");
+        } else {
+            inputNome = document.getElementById('input_nome').value;
         }
 
-        if (inputEmail == "") {
+        if (input_email.value == "") {
             alert("Preencha o campo de Email");
+        } else {
+            inputEmail = document.getElementById('input_email').value;
         }
 
-        if (inputSenha == "") {
+        if (input_senha.value == "") {
             alert("Preencha o campo de Senha");
+        } else {
+            inputSenha = document.getElementById('input_senha').value;
         }
 
-        if (inputRepetirSenha == "") {
+        if (input_repetir_senha.value == "") {
             alert("Repita a Senha");
+        } else {
+            inputRepetirSenha = document.getElementById('input_repetir_senha').value;
         }
-
 
         if (inputJogouLOL == null) {
-            alert("Responda a pergunta");
+            alert("Marque uma resposta");
         }
 
     }

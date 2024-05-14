@@ -76,7 +76,7 @@
     justify-content: center;
 }
 
-.card_dentro_cadastro input{
+.card_dentro_cadastro input {
     width: 300px;
     height: 30px;
 }
@@ -100,7 +100,7 @@
     font-size: 22px;
 }
 
-.cadastro_radio {    
+.cadastro_radio {
     margin-top: 2%;
     display: flex;
     align-items: center;
@@ -111,18 +111,19 @@
 .botao_cadastro {
     margin-top: 4%;
     margin-bottom: 4%;
-    height: 100px;
+    height: 75px;
     width: 200px;
-    background-color: #091428; 
+    background-color: #091428;
     border: none;
     color: white;
-    padding: 15px 32px; text-align: center;
+    padding: 15px 32px;
+    text-align: center;
     text-decoration: none;
-    display: flex; 
+    display: flex;
     align-items: center;
     justify-content: center;
     font-family: BeaufortBold;
-    font-size: 30px;     
+    font-size: 30px;
     border-radius: 5px;
 }
 
@@ -166,7 +167,7 @@
     justify-content: center;
 }
 
-.card_dentro_login input{
+.card_dentro_login input {
     width: 300px;
     height: 30px;
 }
@@ -194,17 +195,18 @@
 .botao_login {
     margin-top: 10%;
     margin-bottom: 10%;
-    height: 100px;
+    height: 75px;
     width: 200px;
-    background-color: #091428; 
+    background-color: #091428;
     border: none;
     color: white;
-    padding: 15px 32px; text-align: center;
+    padding: 15px 32px;
+    text-align: center;
     text-decoration: none;
-    display: flex; 
+    display: flex;
     align-items: center;
     justify-content: center;
     font-family: BeaufortBold;
-    font-size: 30px;     
+    font-size: 30px;
     border-radius: 5px;
 }
