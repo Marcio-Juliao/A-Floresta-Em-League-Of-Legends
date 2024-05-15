@@ -35,16 +35,24 @@
     <div class="container_quiz">
         <div class="banner_quiz">
             <div class="card_quiz">
-                <p class="titulo_quiz">Pergunta 1</p>
+                <p class="titulo_quiz" id="pergunta_ordem">Pergunta 1</p>
                 <div class="card_dentro_quiz">
                     <div class="container_texto_quiz">
-                        <p class="texto_quiz">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint qui?</p>
+                        <p class="texto_quiz">Qual é a origem do poder mágico que concede vida e forma ao Maokai, o Ente Sinistro, em League of Legends?</p>
                     </div>
                     <div class="container_radio_quiz">
-                        <input type="radio" name="input_radio" id="input_radio" value="1"> Resposta 1
-                        <input type="radio" name="input_radio" id="input_radio" value="2"> Resposta 2
-                        <input type="radio" name="input_radio" id="input_radio" value="1"> Resposta 3
-                        <input type="radio" name="input_radio" id="input_radio" value="2"> Resposta 4
+                        <div class="radio_quiz_input">
+                            <input type="radio" name="input_radio" id="input_radio" class="radio_quiz" value="1">
+                            <input type="radio" name="input_radio" id="input_radio" class="radio_quiz" value="2">
+                            <input type="radio" name="input_radio" id="input_radio" class="radio_quiz" value="3">
+                            <input type="radio" name="input_radio" id="input_radio" class="radio_quiz" value="4">
+                        </div>
+                        <div class="radio_quiz_resposta">
+                            <p>Uma maldição antiga lançada por uma feiticeira poderosa.</p>
+                            <p>As águas abençoadas das ilhas das bençãos.</p>
+                            <p>A energia de uma árvore ancestral, absorvida durante uma batalha épica.</p>
+                            <p>A influência de um artefato mágico criado pelos ancestrais yordles.</p>
+                        </div>
                     </div>
                     <div class="container_botoes_quiz">
                         <button class="botao_quiz" id="botao_voltar_quiz" onclick="iniciar_quiz()" style="background-color: #650B0B;">Voltar</button>
