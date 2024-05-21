@@ -123,12 +123,13 @@
     var respostaUser = 0;
     var pontuacaoFinal = 0;
     
+    var NOME_USUARIO = sessionStorage.NOME_USUARIO;
+    var EMAIL_USUARIO = sessionStorage.EMAIL_USUARIO;
+    var ID_USUARIO = sessionStorage.ID_USUARIO;
+    
     function iniciar_quiz() {
-        var NOME_USUARIO = sessionStorage.NOME_USUARIO;
-        var EMAIL_USUARIO = sessionStorage.EMAIL_USUARIO;
-        var ID_USUARIO = sessionStorage.ID_USUARIO;
 
-        if (!NOME_USUARIO && !EMAIL_USUARIO  && !ID_USUARIO) { //lógica invertida, não entendi o por que -> falei com o monitor e nem ele entendeu ao certo
+        if (NOME_USUARIO && EMAIL_USUARIO  && ID_USUARIO) { //lógica invertida, não entendi o por que -> falei com o monitor e nem ele entendeu ao certo
 
             var div_iniciar = document.getElementById('card_iniciar_quiz');
             console.log(div_iniciar);
