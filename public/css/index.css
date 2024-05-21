@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Declaração de Fontes */
+
+@font-face {
+    font-family: Beaufort;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-Regular.ttf);
+}
+
+@font-face {
+    font-family: BeaufortBold;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-Bold.ttf);
+}
+
+@font-face {
+    font-family: BeaufortItalic;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-Italic.ttf);
+}
+
+@font-face {
+    font-family: BeaufortBoldItalic;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-BoldItalic.ttf);
+}
+
+@font-face {
+    font-family: Spiegel;
+    src: url(../src/font/Spiegel-TTF/Spiegel_TT_Regular.ttf);
+}
+
+@font-face {
+    font-family: SpiegelBold;
+    src: url(../src/font/Spiegel-TTF/Spiegel_TT_Bold.ttf);
+}
+
+
+/* Banner do Topo */
+
+.banner_topo {
+    height: 840px;
+    background-image: url(../src/img/Banner_Topo.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.elementos_topo {
+    width: 890px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container_banner_topo {
+    color: #F4BB72;
+    font-family: BeaufortBold;
+    font-size: 30px;
+    align-self: flex-start;
+}
+
+.imagem_topo img {
+    height: 437px;
+    width: 890px;
+}
+
+/* O Mundo */
+
+.container_mundo {
+    display: flex;
+    flex-direction: row;
+    height: 695px;
+    color: #F4BB72;
+}
+
+.container_texto_mundo {
+    width: 50%;
+    background-color: #1E1E1E;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 90px;
+}
+
+.container_img_mundo {
+    width: 50%;
+    background-image: url(../src/img/Imagem_Mundo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Textos do Meio do Site */
+
+.titulo_meio {
+    font-family: BeaufortBold;
+    font-size: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.texto_meio {
+    font-family: Spiegel;
+    font-size: 18px;
+    padding-bottom: 20px;
+}
+
+.conteudo_meio {
+    text-indent: 40px;
+    font-size: 22px;
+}
+
+/* As ODS da ONU */
+
+.container_ods {
+    display: flex;
+    flex-direction: row;
+    height: 695px;
+    color: #F4BB72;
+}
+
+.container_texto_ods {
+    width: 50%;
+    background-color: #091428;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 90px;
+}
+
+.container_img_ods {
+    width: 50%;
+    background-image: url(../src/img/Imagem_ods.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Personagens */
+
+.container_personagens {
+    background-color: #1E1E1E;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container_titulo_personagens {
+    font-family: BeaufortBold;
+    font-size: 60px;
+    padding-left: 30px;
+}
+
+
+.container_imagens_lanes_personagens {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-right: 50px;
+    margin: 0 150px;
+}
+
+.espacador {
+    width: 250px;
+}
+
+.container_imagens_lanes_personagens img {
+    margin: 0 50px;
+}
+
+.container_imagens_personagens {
+    height: 625px;
+    background-color: #1E1E1E;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.imagem_maokai {
+    height: 537px;
+    width: 50%;
+    background-image: url(../src/img/Maokai_0.jpg);
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+}
+
+.imagem_ivern {
+    height: 537px;
+    width: 50%;
+    background-image: url(../src/img/Ivern_0.jpg);
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+}
+
+.titulo_personagens {
+    color: white;
+    font-family: BeaufortBoldItalic;
+    font-size: 30px;
+}
+
+.texto_personagens {
+    color: white;
+    font-family: BeaufortBoldItalic;
+    font-size: 100px;
+}
+
+/* Texto dos Personagens */
+
+.container_texto_personagens {
+    height: 500px;
+    color: black;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 90px;
+}
+
+.container_texto_personagens p{
+    margin: 0 35px;
+    width: 800px;
+    height: 100%;
+}
+
+.titulo_personagens_texto {
+    font-size: 40px;
+    font-family: BeaufortBoldItalic;
+}
+
+.conteudo_personagens_texto {
+    font-size: 22px;
+    font-family: Beaufort;
+}

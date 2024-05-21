@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Declaração de Fontes */
+
+@font-face {
+    font-family: Beaufort;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-Regular.ttf);
+}
+
+@font-face {
+    font-family: BeaufortBold;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-Bold.ttf);
+}
+
+@font-face {
+    font-family: BeaufortItalic;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-Italic.ttf);
+}
+
+@font-face {
+    font-family: BeaufortBoldItalic;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-BoldItalic.ttf);
+}
+
+@font-face {
+    font-family: Spiegel;
+    src: url(../src/font/Spiegel-TTF/Spiegel_TT_Regular.ttf);
+}
+
+@font-face {
+    font-family: SpiegelBold;
+    src: url(../src/font/Spiegel-TTF/Spiegel_TT_Bold.ttf);
+}
+
+/* Estatisticas */
+
+.container_estatisticas {
+    width: 100%;
+}
+
+.banner_estatisticas {
+    height: 895px;
+    width: 100%;
+    background-image: url(../src/img/Banner_Estatisticas.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.card_estatisticas {
+    margin-left: 3%;
+    height: 750px;
+    width: 40%;
+    background-color: #091428;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+
+.titulo_estatisticas {
+    font-size: 60px;
+    font-family: BeaufortBoldItalic;
+    color: #F4BB72;
+    margin-top: 10%;
+}
+
+.texto_estatisticas {
+    margin-top: 2%;
+    font-size: 22px;
+}
+
+.grafico1_estatisticas {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5%;
+    margin-bottom: 10%;
+}
+
+.titulo_grafico {
+    font-family: BeaufortBoldItalic;
+    color: #F4BB72;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 5%;
+}
+
+
+.card_ranking {
+    margin-left: 15%;
+    margin-right: 3%;
+    height: 750px;
+    width: 40%;
+    background-color: rgb(9, 20, 40, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 3px;
+}
+
+.titulo_ranking {
+    font-size: 60px;
+    font-family: BeaufortBoldItalic;
+    color: #F4BB72;
+    position: absolute;
+    top: 7.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.subtitulo_ranking {
+    font-family: BeaufortBoldItalic;
+    color: #F4BB72;
+    font-size: 30px;
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.container_ranking {
+    margin-top: 17%;
+    height: 100%;
+    width: 90%;
+    overflow-y: auto;
+    padding-left: 10px;
+}
+
+.container_ranking::-webkit-scrollbar {
+    width: 5px;
+}
+
+.container_ranking::-webkit-scrollbar-thumb {
+    background-color: #F4BB72;
+    border-radius: 3px;
+}
+
+.usuario_ranking {
+    margin-top: 2%;
+    height: 60px;
+    width: 650px;
+    background-color: #091428;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    color: #F4BB72;
+    font-family: BeaufortBoldItalic;
+    font-size: 22px;
+    padding-left: 4%;
+}
+
+

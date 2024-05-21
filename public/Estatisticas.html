@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <title>Ranking - A Floresta em League Of Legends</title>
+    <link rel="icon" type="image/x-icon" href="../src/img/LoL_Icon_Flat_GOLD.svg">
+    <link rel="stylesheet" href="../css/estatisticas.css">
+    <link rel="stylesheet" href="../css/navbar-footer.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body onload="gerarGrafico(); iniciarAtualizacaoRanking(); iniciarAtualizacaoGrafico();">
+    <div class="header">
+        <div class="container_header">
+            <a href="./index.html"><img src="../src/img/LoL_Icon_Flat_GOLD.svg" class="icone_logo"></a>
+            <ul class="navbar">
+                <a href="./Saiba_Mais.html">
+                    <li>Saiba Mais</li>
+                </a>
+                <a href="./Quiz.html">
+                    <li>Quiz</li>
+                </a>
+                <a href="./Estatisticas.html">
+                    <li>Estatísticas</li>
+                    <a href="./Login.html">
+                        <li>Login</li>
+                    </a>
+                    <a href="./Cadastrar.html">
+                        <li>Cadastrar</li>
+                    </a>
+            </ul>
+        </div>
+    </div>
+    <div class="container_estatisticas">
+        <div class="banner_estatisticas">
+            <div class="card_estatisticas">
+                <p class="titulo_estatisticas">Estatísticas Gerais</p>
+                <div class="container_estatisticas">
+                    <p class="titulo_grafico">
+                        Proporção de Jogadores e Não Jogadores
+                    </p>
+                    <canvas id="GraficoBarras" class="grafico1_estatisticas"></canvas>
+                </div>
+            </div>
+            <div class="card_ranking">
+                <p class="titulo_ranking">Ranking Geral</p>
+                <p class="subtitulo_ranking">Top 10</p>
+                <div class="container_ranking" id="container_ranking"></div>
+            </div>
+        </div>
+    </div>
+    <div class="linha"></div>
+    <div class="div_footer">
+        <div class="container_footer">
+            <ul class="footer">
+                <li>
+                    <p class="titulo_footer">Autor</p>
+                    <p class="texto_footer">Marcio Ribeiro Julião</p>
+                </li>
+                <li>
+                    <p class="titulo_footer">Contato</p>
+                    <p class="texto_footer">marcio.juliao@sptech.school</p>
+                </li>
+                <li>
+                    <p class="titulo_footer">Endereço</p>
+                    <p class="texto_footer">R. Haddock Lobo, 595</p>
+                </li>
+                <li>
+                    <p class="titulo_footer">Redes Sociais</p>
+                    <a href="https://www.linkedin.com/in/marcio-r-juliao/" target="_blank"><img
+                            src="../src/img/Imagem_Linkedin.png"></a>
+                    <a href="https://github.com/Marcio-Juliao" target="_blank"><img
+                            src="../src/img/Imagem_Github.png"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    var respostaBancoRanking = [];
+    var respostaBancoGrafico = [];
+    var chart = null;  // Declarar a variável chart no escopo global
+
+    function gerarRanking() {
+        fetch("/estatisticas/top10", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO gerarRanking!");
+
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    console.log(json);
+                    respostaBancoRanking = json;
+
+                    // Atualiza o ranking na página
+                    atualizarRanking(respostaBancoRanking);
+                });
+            } else {
+                console.log("Houve um erro ao capturar o top 10!");
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        });
+
+        return false;
+    }
+
+    function gerarGrafico() {
+        fetch("/estatisticas/jogadores", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO gerarGrafico!");
+
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    console.log(json);
+                    respostaBancoGrafico = json;
+
+                    atualizarGrafico(respostaBancoGrafico);
+                    console.log(respostaBancoGrafico);
+                });
+            } else {
+                console.log("Houve um erro ao capturar os dados do gráfico!");
+                resposta.text().then(texto => {
+                    console.error(texto);
+                });
+            }
+        }).catch(function (erro) {
+            console.log(erro);
+        });
+
+        return false;
+    }
+
+    function iniciarAtualizacaoRanking() {
+        gerarRanking();
+        setInterval(gerarRanking(), 5000);
+    }
+
+    function iniciarAtualizacaoGrafico() {
+        gerarGrafico();
+        setInterval(gerarGrafico(), 30000);
+    }
+
+    function atualizarRanking(ranking) {
+        container_ranking.innerHTML = '';
+
+        for (var i = 0; i < ranking.length; i++) {
+            var usuario = ranking[i];
+
+            container_ranking.innerHTML += `
+            <div class="usuario_ranking"><span style="justify-self: flex-start;">${i + 1}º Lugar</span>Usuário:<span
+                            style="color: aquamarine; margin-left: -10px;">${usuario.nome}</span> Acertos: ${usuario.acertos}/5
+                        <span>-</span><span style="color: aquamarine;">(${(usuario.acertos / 5) * 100}%)</span>
+            </div>
+        `;
+        }
+    }
+
+    function atualizarGrafico(dados) {
+        // alert(JSON.stringify(dados, null, 2));
+
+        const labels = ['Já Jogou', 'Nunca Jogou'];
+        var dadosGrafico = [dados[0], dados[1]];
+        dadosGrafico = JSON.stringify(dadosGrafico);
+
+        if (chart) {
+            chart.destroy(); // Destruindo o gráfico se já existir um
+        }
+
+        const ctx = document.getElementById('GraficoBarras').getContext('2d');
+        chart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Usuários',
+                    data: dadosGrafico,
+                    backgroundColor: ['rgba(54, 162, 235, 0.7)','rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)'],
+                    borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
+                    borderWidth: 0.5
+                }]
+            },
+            options: {
+                aspectRatio: 1.5
+            }
+        });
+    }
+
+</script>

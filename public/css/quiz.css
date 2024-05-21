@@ -1,0 +1,268 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Declaração de Fontes */
+
+@font-face {
+    font-family: Beaufort;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-Regular.ttf);
+}
+
+@font-face {
+    font-family: BeaufortBold;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-Bold.ttf);
+}
+
+@font-face {
+    font-family: BeaufortItalic;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-Italic.ttf);
+}
+
+@font-face {
+    font-family: BeaufortBoldItalic;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-BoldItalic.ttf);
+}
+
+@font-face {
+    font-family: Spiegel;
+    src: url(../src/font/Spiegel-TTF/Spiegel_TT_Regular.ttf);
+}
+
+@font-face {
+    font-family: SpiegelBold;
+    src: url(../src/font/Spiegel-TTF/Spiegel_TT_Bold.ttf);
+}
+
+/* Iniciar Quiz */
+
+.container_quiz {
+    width: 100%;
+}
+
+.banner_quiz {
+    height: 895px;
+    width: 100%;
+    background-image: url(../src/img/Banner_Estatisticas.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card_iniciar_quiz {
+    margin-left: 3%;
+    height: 325px;
+    width: 22.5%;
+    background-color: #091428;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+
+.titulo_iniciar_quiz {
+    font-size: 60px;
+    font-family: BeaufortBoldItalic;
+    color: #F4BB72;
+    margin-top: 10%;
+}
+
+.texto_iniciar_quiz {
+    margin-top: 1%;
+    font-size: 22px;
+    color: aquamarine;
+    font-family: BeaufortBoldItalic;
+}
+
+.botao_iniciar_quiz {
+    margin-top: 4%;
+    margin-bottom: 10%;
+    height: 75px;
+    width: 200px;
+    background-color: #F4BB72;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    font-family: BeaufortBold;
+    font-size: 30px;
+    border-radius: 5px;
+}
+
+/* Quiz */
+
+.container_quiz {
+    width: 100%;
+}
+
+.banner_quiz {
+    height: 895px;
+    width: 100%;
+    background-image: url(../src/img/Banner_Estatisticas.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card_quiz {
+    height: 650px;
+    width: 60%;
+    background-color: #091428;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    border-radius: 3px;
+    padding-bottom: 1%;
+}
+
+.card_dentro_quiz {
+    height: 520px;
+    width: 97.5%;
+    background-color: white;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.titulo_quiz {
+    font-size: 60px;
+    font-family: BeaufortBoldItalic;
+    color: #F4BB72;
+    margin: 0 0 3% 2%;
+    align-self: flex-start;
+}
+
+.texto_quiz {
+    padding-top: 2%;
+    font-size: 30px;
+    color: #F4BB72;
+    font-family: BeaufortBold;
+}
+
+.container_texto_quiz{
+    width: 95%;
+}
+
+.container_radio_quiz {
+    margin-top: 4%;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: start;
+    font-family: BeaufortBold;
+    color: #F4BB72;
+}
+
+.radio_quiz_input {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio_quiz_input input{
+    margin-top: 100%;
+}
+
+.radio_quiz_resposta {
+    margin-left: 2.5%;
+    font-size: 22px;
+}
+
+.texto_iniciar_quiz {
+    margin-top: 3%;
+    font-size: 22px;
+    color: aquamarine;
+    font-family: BeaufortBoldItalic;
+}
+
+.container_botoes_quiz {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0% 3%;
+}
+
+.botao_quiz {
+    margin-top: 3%;
+    margin-bottom: 1%;
+    height: 75px;
+    width: 200px;
+    background-color: #F4BB72;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    font-family: BeaufortBold;
+    font-size: 30px;
+    border-radius: 5px;
+}
+
+/* Final do Quiz */
+
+.card_final_quiz {
+    margin-left: 3%;
+    height: 400px;
+    width: 22.5%;
+    background-color: #091428;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.titulo_final_quiz {
+    font-size: 60px;
+    font-family: BeaufortBoldItalic;
+    color: #F4BB72;
+    margin-top: 2.5%;
+}
+
+.texto_final_quiz {
+    margin-top: 1%;
+    font-size: 22px;
+    color: white;
+    font-family: BeaufortBoldItalic;
+}
+
+.botao_finalizar_quiz {
+    margin-top: 4%;
+    margin-bottom: 5%;
+    height: 75px;
+    width: 200px;
+    background-color: #F4BB72;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    font-family: BeaufortBold;
+    font-size: 30px;
+    border-radius: 5px;
+}
+

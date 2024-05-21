@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <title>Quiz - A Floresta em League Of Legends</title>
+    <link rel="icon" type="image/x-icon" href="src/img/LoL_Icon_Flat_GOLD.svg">
+    <link rel="stylesheet" href="../css/quiz.css">
+    <link rel="stylesheet" href="../css/navbar-footer.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="container_header">
+            <a href="./index.html"><img src="../src/img/LoL_Icon_Flat_GOLD.svg" class="icone_logo"></a>
+            <ul class="navbar">
+                <a href="./Saiba_Mais.html">
+                    <li>Saiba Mais</li>
+                </a>
+                <a href="./Quiz.html">
+                    <li>Quiz</li>
+                </a>
+                <a href="./Estatisticas.html">
+                    <li>Estatísticas</li>
+                    <a href="./Login.html">
+                        <li>Login</li>
+                    </a>
+                    <a href="./Cadastrar.html">
+                        <li>Cadastrar</li>
+                    </a>
+            </ul>
+        </div>
+    </div>
+    <div class="container_quiz">
+        <div class="banner_quiz">
+            <div class="card_iniciar_quiz" id="card_iniciar_quiz">
+                <p class="titulo_iniciar_quiz">Iniciar Quiz</p>
+                <p class="texto_iniciar_quiz">5 Perguntas</p>
+                <button class="botao_iniciar_quiz" id="botao_iniciar_quiz" onclick="iniciar_quiz()">Iniciar
+                    Quiz</button>
+            </div>
+            <div class="card_quiz" id="card_quiz" style="display: none;">
+                <p class="titulo_quiz" id="titulo_quiz"></p>
+                <div class="card_dentro_quiz">
+                    <div class="container_texto_quiz">
+                        <p class="texto_quiz" id="texto_quiz"></p>
+                    </div>
+                    <div class="container_radio_quiz">
+                        <div class="radio_quiz_input">
+                            <input type="radio" name="input_radio" id="input_radio1" class="radio_quiz" value="1">
+                            <input type="radio" name="input_radio" id="input_radio2" class="radio_quiz" value="2">
+                            <input type="radio" name="input_radio" id="input_radio3" class="radio_quiz" value="3">
+                            <input type="radio" name="input_radio" id="input_radio4" class="radio_quiz" value="4">
+                        </div>
+                        <div class="radio_quiz_resposta">
+                            <p id="resposta_1"></p>
+                            <p id="resposta_2"></p>
+                            <p id="resposta_3"></p>
+                            <p id="resposta_4"></p>
+                        </div>
+                    </div>
+                    <div class="container_botoes_quiz">
+                        <button class="botao_quiz" id="botao_proximo_quiz" onclick="proxima_pergunta()"
+                            style="background-color: #18650B;">Próximo</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card_final_quiz" id="card_final_quiz" style="display: none;">
+                <p class="titulo_final_quiz" id="titulo_final_quiz"></p>
+                <p class="texto_final_quiz" id="texto_final_quiz"></p>
+                <button class="botao_finalizar_quiz" id="botao_finalizar_quiz" onclick="finalizar_quiz()">Finalizar
+                    Quiz</button>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <div class="linha"></div>
+    <div class="div_footer">
+        <div class="container_footer">
+            <ul class="footer">
+                <li>
+                    <p class="titulo_footer">Autor</p>
+                    <p class="texto_footer">Marcio Ribeiro Julião</p>
+                </li>
+                <li>
+                    <p class="titulo_footer">Contato</p>
+                    <p class="texto_footer">marcio.juliao@sptech.school</p>
+                </li>
+                <li>
+                    <p class="titulo_footer">Endereço</p>
+                    <p class="texto_footer">R. Haddock Lobo, 595</p>
+                </li>
+                <li>
+                    <p class="titulo_footer">Redes Sociais</p>
+                    <a href="https://www.linkedin.com/in/marcio-r-juliao/" target="_blank"><img
+                            src="../src/img/Imagem_Linkedin.png"></a>
+                    <a href="https://github.com/Marcio-Juliao" target="_blank"><img
+                            src="../src/img/Imagem_Github.png"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+
+    var listaPerguntas = ['Qual é a origem do poder mágico que concede vida e forma ao Maokai, o Ente Sinistro, em League of Legends?', 'Como os feitos de Maokai e Ivern em League of Legends podem servir de inspiração para a preservação da natureza e conscientização ambiental?', 'Como as ações de Maokai e Ivern em League of Legends refletem valores de conservação ambiental e podem inspirar os jogadores a se envolverem na proteção da natureza?', 'Qual era o nome de Ivern antes de sua transformação?', 'Como Maokai preserva a última água sagrada?'];
+    var listaRespostas = ['Uma maldição antiga lançada por uma feiticeira poderosa.', 'As águas abençoadas das ilhas das bençãos.', 'A energia de uma árvore ancestral, absorvida durante uma batalha épica.', 'A influência de um artefato mágico criado pelos ancestrais yordles.', 'Ivern, após destruir um bosque sagrado, se transforma e passa a proteger a natureza e suas criaturas.', 'Ivern desenvolve tecnologias para a urbanização de áreas florestais.', 'Maokai lidera um exército para conquistar territórios florestais.', 'Maokai e Ivern se unem para desenvolver indústrias.', 'Maokai colabora com empresas que exploram recursos naturais de forma descontrolada.', 'Maokai usa sua força para destruir áreas florestais em busca de vingança.', 'Maokai e Ivern se unem para poluir o ambiente, aumentando os problemas ambientais no jogo.', 'Ivern trabalha para proteger a vida selvagem, promovendo a preservação da natureza.', 'Ivern, O Pai do Verde', 'Ivern, o Amável', 'Ivern, o Terrível', 'Ivern, o Conquistador', 'Guardando-a num lugar escondido de tudo e todos', 'No fundo de seu coração', 'Nas nascentes das águas tonificantes sagradas', 'Junto do coveiro, Yorick'];
+    var listaGabarito = [1, 4, 11, 14, 17]; //Indica as posições das respostas corretas, no vetor "listaRespostas".
+    var gabaritoAx = [2, 1, 4, 3, 2]; // Indica os values dos radios corretos em ordem de pergunta.
+
+    var qtdRespostas = listaRespostas.length;
+
+    
+    var contadorAcertos = 0;
+    var contadorPergunta = 0;
+    var contadorRespostas = 0;
+    var respostaUser = 0;
+    var pontuacaoFinal = 0;
+    
+    function iniciar_quiz() {
+        var NOME_USUARIO = sessionStorage.NOME_USUARIO;
+        var EMAIL_USUARIO = sessionStorage.EMAIL_USUARIO;
+        var ID_USUARIO = sessionStorage.ID_USUARIO;
+
+        if (!NOME_USUARIO && !EMAIL_USUARIO  && !ID_USUARIO) { //lógica invertida, não entendi o por que -> falei com o monitor e nem ele entendeu ao certo
+
+            var div_iniciar = document.getElementById('card_iniciar_quiz');
+            console.log(div_iniciar);
+            div_iniciar.style.display = 'none';
+
+            var div_pergunta = document.getElementById('card_quiz');
+            console.log(div_pergunta);
+            div_pergunta.style.display = 'flex';
+
+            proxima_pergunta();
+
+        } else {
+            alert(`Faça login para poder fazer o quiz! \n \n \t Redirecionando para a página de login...`);
+            setTimeout(function () {
+                window.location = "./login.html";
+            }, 1000);
+        }
+
+    }
+
+    function proxima_pergunta() {
+
+        var radioInputs = document.querySelectorAll('input[name="input_radio"]:checked');
+
+        if (radioInputs.length > 0) {
+            respostaUser = Number(radioInputs[0].value);
+        } else {
+            respostaUser = 0;
+        }
+
+        pontuarResposta();
+
+        if (contadorPergunta < 5) {
+
+            if (contadorPergunta == 1 && radioInputs.length < 1) {
+                alert("Selecione uma alternativa para prosseguir!");
+                return;
+            }
+
+            for (var i = 0; i < 4; i++) {
+                var resposta = document.getElementById('resposta_' + (i + 1));
+                resposta.innerHTML = "";
+            }
+
+            titulo_quiz.innerHTML = `Pergunta ${contadorPergunta + 1}`;
+            texto_quiz.innerHTML = listaPerguntas[contadorPergunta];
+
+            for (var i = contadorRespostas; i < contadorRespostas + 4 && i < qtdRespostas; i++) {
+                var resposta = document.getElementById('resposta_' + (i - contadorRespostas + 1));
+                resposta.innerHTML = listaRespostas[i];
+            }
+            contadorRespostas = i;
+
+            contadorPergunta++;
+
+
+        } else {
+
+            //Ocultando as perguntas
+            var div_pergunta = document.getElementById('card_quiz');
+            div_pergunta.style.display = 'none';
+            //Exibindo o card de finalização do quiz
+            var div_final = document.getElementById('card_final_quiz');
+            div_final.style.display = 'flex';
+
+            titulo_final_quiz.innerHTML = 'Tentativa Finalizada';
+            texto_final_quiz.innerHTML = `<span style="color: aquamarine;">${NOME_USUARIO}</span>, você acertou ${contadorAcertos}/5 Questões!`;
+
+        }
+
+    }
+
+    function finalizar_quiz() {
+
+        enviarResposta();
+
+        setTimeout(function () {
+            alert(`Direcionando para a página de estatísticas...`);
+            window.location = "./Estatisticas.html";
+        }, 500);
+
+    }
+
+    function pontuarResposta() {
+
+        if (contadorPergunta == 1 && respostaUser == gabaritoAx[0]) {
+            contadorAcertos++;
+        }
+
+        if (contadorPergunta == 2 && respostaUser == gabaritoAx[1]) {
+            contadorAcertos++;
+        }
+
+        if (contadorPergunta == 3 && respostaUser == gabaritoAx[2]) {
+            contadorAcertos++;
+        }
+
+        if (contadorPergunta == 4 && respostaUser == gabaritoAx[3]) {
+            contadorAcertos++;
+        }
+
+        if (contadorPergunta == 5 && respostaUser == gabaritoAx[4]) {
+            contadorAcertos++;
+        }
+        respostaUser = 0;
+
+    }
+
+    if (contadorPergunta == 5) {
+        pontuacaoFinal = contadorAcertos;
+    }
+
+    function enviarResposta() {
+
+        var idVar = sessionStorage.ID_USUARIO;
+        var acertosVar = contadorAcertos;
+
+        if (idVar == "" || acertosVar == "") {
+            alert("Erro ao registrar resposta, campos nulos!");
+            return false;
+        }
+
+        fetch("/quiz/enviarRelatorio", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                idServer: idVar,
+                acertosServer: acertosVar
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    return true;
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
+            });
+
+        return false;
+    }
+
+
+
+
+</script>

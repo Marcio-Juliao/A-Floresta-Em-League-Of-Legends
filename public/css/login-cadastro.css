@@ -1,0 +1,218 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Declaração de Fontes */
+
+@font-face {
+    font-family: Beaufort;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-Regular.ttf);
+}
+
+@font-face {
+    font-family: BeaufortBold;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-Bold.ttf);
+}
+
+@font-face {
+    font-family: BeaufortItalic;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-Italic.ttf);
+}
+
+@font-face {
+    font-family: BeaufortBoldItalic;
+    src: url(../src/font/BeaufortForLoL-TTF/BeaufortforLOL-BoldItalic.ttf);
+}
+
+@font-face {
+    font-family: Spiegel;
+    src: url(../src/font/Spiegel-TTF/Spiegel_TT_Regular.ttf);
+}
+
+@font-face {
+    font-family: SpiegelBold;
+    src: url(../src/font/Spiegel-TTF/Spiegel_TT_Bold.ttf);
+}
+
+/* Cadastro */
+
+.container_cadastro {
+    width: 100%;
+}
+
+.banner_cadastro {
+    height: 895px;
+    width: 100%;
+    background-image: url(../src/img/Banner_Cadastro.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.card_cadastro {
+    margin-left: 3%;
+    height: 750px;
+    width: 30%;
+    background-color: #091428;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+
+.card_dentro_cadastro {
+    background-color: white;
+    height: 90%;
+    width: 90%;
+    font-family: BeaufortBold;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+
+.card_dentro_cadastro input {
+    width: 300px;
+    height: 30px;
+}
+
+.campos_cadastro {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    border-radius: 3px;
+}
+
+.titulo_cadastro {
+    font-size: 60px;
+    margin-top: 10%;
+}
+
+.texto_cadastro {
+    margin-top: 2%;
+    font-size: 22px;
+}
+
+.cadastro_radio {
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.botao_cadastro {
+    margin-top: 4%;
+    margin-bottom: 4%;
+    height: 75px;
+    width: 200px;
+    background-color: #091428;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: BeaufortBold;
+    font-size: 30px;
+    border-radius: 5px;
+}
+
+/* login */
+
+.container_login {
+    width: 100%;
+}
+
+.banner_login {
+    height: 895px;
+    width: 100%;
+    background-image: url(../src/img/Banner_Login.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.card_login {
+    margin-left: 3%;
+    height: 750px;
+    width: 30%;
+    background-color: #091428;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+
+.card_dentro_login {
+    background-color: white;
+    height: 90%;
+    width: 90%;
+    font-family: BeaufortBold;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+}
+
+.card_dentro_login input {
+    width: 300px;
+    height: 30px;
+    border-radius: 3px;
+}
+
+.campos_login {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+.titulo_login {
+    font-size: 50px;
+    margin-top: 30%;
+    text-align: center;
+}
+
+.texto_login {
+    margin-top: 6%;
+    font-size: 22px;
+}
+
+.botao_login {
+    margin-top: 10%;
+    margin-bottom: 10%;
+    height: 75px;
+    width: 200px;
+    background-color: #091428;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: BeaufortBold;
+    font-size: 30px;
+    border-radius: 5px;
+}

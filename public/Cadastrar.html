@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <title>Cadastrar - A Floresta em League Of Legends</title>
+    <link rel="icon" type="image/x-icon" href="src/img/LoL_Icon_Flat_GOLD.svg">
+    <link rel="stylesheet" href="../css/login-cadastro.css">
+    <link rel="stylesheet" href="../css/navbar-footer.css">
+
+    <script src="./js/sessao.js"></script>
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="container_header">
+            <a href="./index.html"><img src="../src/img/LoL_Icon_Flat_GOLD.svg" class="icone_logo"></a>
+            <ul class="navbar">
+                <a href="./Saiba_Mais.html">
+                    <li>Saiba Mais</li>
+                </a>
+                <a href="./Quiz.html">
+                    <li>Quiz</li>
+                </a>
+                <a href="./Estatisticas.html">
+                    <li>Estatísticas</li>
+                </a>
+                <a href="./Login.html">
+                    <li>Login</li>
+                </a>
+                <a href="./Cadastrar.html">
+                    <li>Cadastrar</li>
+                </a>
+            </ul>
+        </div>
+    </div>
+    <div class="container_cadastro">
+        <div class="banner_cadastro">
+            <div class="card_cadastro">
+                <div class="card_dentro_cadastro">
+                    <div class="campos_cadastro">
+                        <div class="titulo_cadastro">Cadastre-se</div>
+                        <div class="texto_cadastro">Nome de usuário</div>
+                        <input type="text" id="input_nome" class="inputs_cadastro">
+                        <div class="texto_cadastro">Email</div>
+                        <input type="text" id="input_email" class="inputs_cadastro">
+                        <div class="texto_cadastro">Senha</div>
+                        <input type="password" id="input_senha" class="inputs_cadastro">
+                        <div class="texto_cadastro">Repita a senha</div>
+                        <input type="password" id="input_repetir_senha" class="inputs_cadastro">
+                        <div class="texto_cadastro">Você Já Jogou League Of Legends Antes?</div>
+                        <div class="cadastro_radio">
+                            <input type="radio" name="input_radio" id="input_radio_s" value="1"> Sim
+                            <input type="radio" name="input_radio" id="input_radio_n" value="0"> Não
+                        </div>
+                        <button id="botao_cadastro" class="botao_cadastro" onclick="cadastrar()">Cadastrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="linha"></div>
+    <div class="div_footer">
+        <div class="container_footer">
+            <ul class="footer">
+                <li>
+                    <p class="titulo_footer">Autor</p>
+                    <p class="texto_footer">Marcio Ribeiro Julião</p>
+                </li>
+                <li>
+                    <p class="titulo_footer">Contato</p>
+                    <p class="texto_footer">marcio.juliao@sptech.school</p>
+                </li>
+                <li>
+                    <p class="titulo_footer">Endereço</p>
+                    <p class="texto_footer">R. Haddock Lobo, 595</p>
+                </li>
+                <li>
+                    <p class="titulo_footer">Redes Sociais</p>
+                    <a href="https://www.linkedin.com/in/marcio-r-juliao/" target="_blank"><img
+                            src="../src/img/Imagem_Linkedin.png"></a>
+                    <a href="https://github.com/Marcio-Juliao" target="_blank"><img
+                            src="../src/img/Imagem_Github.png"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    var inputEmail = "";
+    var inputNome = "";
+    var inputSenha = "";
+    var inputRepetirSenha = "";
+    var inputJogouLOL = "";
+
+    
+    function cadastrar() {
+
+        var nomeVar = input_nome.value;
+        var emailVar = input_email.value;
+        var senhaVar = input_senha.value;
+        var confirmacaoSenhaVar = input_repetir_senha.value;
+        var jogouLolVar = parseInt((document.querySelector('input[name="input_radio"]:checked')).value);
+        if (
+            nomeVar == "" ||
+            emailVar == "" ||
+            senhaVar == "" ||
+            confirmacaoSenhaVar == ""
+        ) {
+            alert("Preencha todos os campos!");
+            return false;
+        }
+
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                senhaServer: senhaVar,
+                jogouLolServer: jogouLolVar
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+
+                        alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+
+                    setTimeout(() => {
+                        window.location = "./login.html";
+                    }, "2000");
+
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+        return false;
+    }
+
+</script>
