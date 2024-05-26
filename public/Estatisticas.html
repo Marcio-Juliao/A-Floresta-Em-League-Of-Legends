@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body onload="gerarGrafico(); iniciarAtualizacaoRanking(); iniciarAtualizacaoGrafico();">
+<body onload="refreshRanking(); refreshGrafico();">
     <div class="header">
         <div class="container_header">
             <a href="./index.html"><img src="../src/img/LoL_Icon_Flat_GOLD.svg" class="icone_logo"></a>
@@ -31,6 +31,7 @@
                         <li>Cadastrar</li>
                     </a>
             </ul>
+
         </div>
     </div>
     <div class="container_estatisticas">
@@ -82,26 +83,25 @@
 </html>
 
 <script>
-    var respostaBancoRanking = [];
-    var respostaBancoGrafico = [];
-    var chart = null;  // Declarar a variável chart no escopo global
 
-    function gerarRanking() {
+    var chart = null;  // chart como variável global
+
+    function fetchRanking() {
         fetch("/estatisticas/top10", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
             }
         }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO gerarRanking!");
+            console.log("ESTOU NO THEN DO fetchRanking!");
 
             if (resposta.ok) {
                 resposta.json().then(json => {
                     console.log(json);
-                    respostaBancoRanking = json;
+                    var respostaBanco = json;
 
                     // Atualiza o ranking na página
-                    atualizarRanking(respostaBancoRanking);
+                    atualizarRanking(respostaBanco);
                 });
             } else {
                 console.log("Houve um erro ao capturar o top 10!");
@@ -116,23 +116,24 @@
         return false;
     }
 
-    function gerarGrafico() {
-        
+    function fetchGrafico() {
+
         fetch("/estatisticas/jogadores", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json"
             }
         }).then(function (resposta) {
-            console.log("ESTOU NO THEN DO gerarGrafico!");
+            console.log("ESTOU NO THEN DO fetchGrafico!");
 
             if (resposta.ok) {
                 resposta.json().then(json => {
                     console.log(json);
-                    respostaBancoGrafico = json;
 
-                    atualizarGrafico(respostaBancoGrafico);
-                    console.log(respostaBancoGrafico);
+                    var respostaBanco = json;
+
+                    // Atualiza o gráfico na página
+                    atualizarGrafico(respostaBanco);
                 });
             } else {
                 console.log("Houve um erro ao capturar os dados do gráfico!");
@@ -147,14 +148,14 @@
         return false;
     }
 
-    function iniciarAtualizacaoRanking() {
-        gerarRanking();
-        setInterval(gerarRanking(), 5000);
+    function refreshRanking() {
+        fetchRanking();
+        setInterval(fetchRanking(), 5000);
     }
 
-    function iniciarAtualizacaoGrafico() {
-        gerarGrafico();
-        setInterval(gerarGrafico(), 30000);
+    function refreshGrafico() {
+        fetchGrafico();
+        setInterval(fetchGrafico(), 30000);
     }
 
     function atualizarRanking(ranking) {
@@ -191,7 +192,7 @@
                 datasets: [{
                     label: 'Usuários',
                     data: dadosGrafico,
-                    backgroundColor: ['rgba(54, 162, 235, 0.7)','rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)'],
+                    backgroundColor: ['rgba(54, 162, 235, 0.7)', 'rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)'],
                     borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
                     borderWidth: 0.5
                 }]
