@@ -11,7 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body onload="refreshRanking(); refreshGrafico();">
+<body onload="refreshRanking(); refreshGrafico();"> <!-- Chamando duas funções no ato de carregamento do body na tela do usuário, ou seja, quase que instantaneamente -->
     <div class="header">
         <div class="container_header">
             <a href="./index.html"><img src="../src/img/LoL_Icon_Flat_GOLD.svg" class="icone_logo"></a>
@@ -84,7 +84,7 @@
 
 <script>
 
-    var chart = null;  // chart como variável global
+    var chart = null;  // inicializando a variável chart no escopo global, pois ela será verificada num if mais abaixo
 
     function fetchRanking() {
         fetch("/estatisticas/top10", {
@@ -98,10 +98,9 @@
             if (resposta.ok) {
                 resposta.json().then(json => {
                     console.log(json);
-                    var respostaBanco = json;
+                    var respostaBanco = json; // Armazenando o JSON que veio como resposta do fetch numa variável local
 
-                    // Atualiza o ranking na página
-                    atualizarRanking(respostaBanco);
+                    atualizarRanking(respostaBanco); // Chamando a função que atualiza o gráfico, passando a variável local como parâmetro para evitar a criação de uma variável global
                 });
             } else {
                 console.log("Houve um erro ao capturar o top 10!");
@@ -116,7 +115,7 @@
         return false;
     }
 
-    function fetchGrafico() {
+    function fetchGrafico() { 
 
         fetch("/estatisticas/jogadores", {
             method: "GET",
@@ -130,10 +129,9 @@
                 resposta.json().then(json => {
                     console.log(json);
 
-                    var respostaBanco = json;
+                    var respostaBanco = json; // Armazenando o JSON que veio como resposta do fetch numa variável local
 
-                    // Atualiza o gráfico na página
-                    atualizarGrafico(respostaBanco);
+                    atualizarGrafico(respostaBanco); // Chamando a função que atualiza o gráfico, passando a variável local como parâmetro para evitar a criação de uma variável global
                 });
             } else {
                 console.log("Houve um erro ao capturar os dados do gráfico!");
@@ -149,43 +147,43 @@
     }
 
     function refreshRanking() {
-        fetchRanking();
-        setInterval(fetchRanking(), 5000);
+        fetchRanking(); // Chama a função uma vez
+        setInterval(fetchRanking(), 5000); // Chama a função de 5 em 5 segundos, para que as estatísticas sejam constantemente atualizadas
     }
 
     function refreshGrafico() {
-        fetchGrafico();
-        setInterval(fetchGrafico(), 30000);
+        fetchGrafico(); // Chama a função uma vez
+        setInterval(fetchGrafico(), 30000); // Chama a função de 30 em 30 segundos, para que o gráfico seja constantemente atualizado
     }
 
-    function atualizarRanking(ranking) {
-        container_ranking.innerHTML = '';
+    // Função que gera dinamicamente de forma simples os elementos do top 10.
+    function atualizarRanking(ranking) { // Esta função espera um parãmetro que será chamado de "ranking"
+        container_ranking.innerHTML = ''; // Em primeiro momento, limpa totalmente a lista do top10
 
-        for (var i = 0; i < ranking.length; i++) {
-            var usuario = ranking[i];
+        for (var i = 0; i < ranking.length; i++) { // For que vai de 0 até o tamanho do vetor retornado pelo banco, similar a um forEach.
+            var usuario = ranking[i]; // Variável para auxiliar na consumação dos dados mais a frente
 
             container_ranking.innerHTML += `
             <div class="usuario_ranking"><span style="justify-self: flex-start;">${i + 1}º Lugar</span>Usuário:<span
                             style="color: aquamarine; margin-left: -10px;">${usuario.nome}</span> Acertos: ${usuario.acertos}/5
                         <span>-</span><span style="color: aquamarine;">(${(usuario.acertos / 5) * 100}%)</span>
             </div>
-        `;
+        `; // Geração efetiva dos elementos dentro da lista, como está limitado a 10 pela controller, o limite sempre será 10, mas é algo suficientemente flexível no código
         }
     }
 
-    function atualizarGrafico(dados) {
-        // alert(JSON.stringify(dados, null, 2));
+    function atualizarGrafico(dados) { // Esta função espera 1 parâmetro, que aqui se chamará "dados"
 
-        const labels = ['Já Jogou', 'Nunca Jogou'];
-        var dadosGrafico = [dados[0], dados[1]];
-        dadosGrafico = JSON.stringify(dadosGrafico);
+        const labels = ['Já Jogou', 'Nunca Jogou']; // Constante para definir os labels, que são fixamente apenas esses dois
+        var dadosGrafico = [dados[0], dados[1]]; // Separando os dados para o gráfico com base no parâmetro recebido por esta função
+        dadosGrafico = JSON.stringify(dadosGrafico); // Transformando os dados em formato JSON em string, para que possam ser interpretados
 
-        if (chart) {
-            chart.destroy(); // Destruindo o gráfico se já existir um
+        if (chart) { // Verificando se um gráfico já existe, ou seja, se há conteúdo na variável -> Esse é o motivo da variável "chart" ser global
+            chart.destroy(); // Destruindo o gráfico se a condição for cumprida
         }
 
         const ctx = document.getElementById('GraficoBarras').getContext('2d');
-        chart = new Chart(ctx, {
+        chart = new Chart(ctx, { // Pelo que eu entendo, estou instanciando um objeto da classe Chart e o armazenando numa variável global criada anteriormente
             type: 'pie',
             data: {
                 labels: labels,
