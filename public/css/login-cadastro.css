@@ -128,6 +128,7 @@
     font-family: BeaufortBold;
     font-size: 30px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 /* login */
@@ -215,4 +216,5 @@
     font-family: BeaufortBold;
     font-size: 30px;
     border-radius: 5px;
+    cursor: pointer;
 }

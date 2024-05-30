@@ -116,21 +116,22 @@
 
     var qtdRespostas = listaRespostas.length;
 
-    
+
     var contadorAcertos = 0;
     var contadorPergunta = 0;
     var contadorRespostas = 0;
     var respostaUser = 0;
     var pontuacaoFinal = 0;
-    
+
+    // Armazenando em variáveis os dados do session storage que está logado
     var NOME_USUARIO = sessionStorage.NOME_USUARIO;
     var EMAIL_USUARIO = sessionStorage.EMAIL_USUARIO;
     var ID_USUARIO = sessionStorage.ID_USUARIO;
-    
+
     function iniciar_quiz() {
 
-        if (NOME_USUARIO && EMAIL_USUARIO  && ID_USUARIO) { //lógica invertida, não entendi o por que -> falei com o monitor e nem ele entendeu ao certo
-
+        if (NOME_USUARIO && EMAIL_USUARIO && ID_USUARIO) { // Verificando se há um usuário logado no site
+            // Caso haja, o quiz é iniciado (ocultando o card de inicio e exibindo o card do quiz efetivamente)
             var div_iniciar = document.getElementById('card_iniciar_quiz');
             console.log(div_iniciar);
             div_iniciar.style.display = 'none';
@@ -139,13 +140,14 @@
             console.log(div_pergunta);
             div_pergunta.style.display = 'flex';
 
+            // Função próxima pergunta para exibir o conteúdo da pergunta
             proxima_pergunta();
 
-        } else {
-            alert(`Faça login para poder fazer o quiz! \n \n \t Redirecionando para a página de login...`);
+        } else { // Caso não haja um usuário logado, pede-se para que o usuário faça login
+            alert(`Faça login ou crie uma conta para poder fazer o quiz! \n \n \t Redirecionando para a página de login...`);
             setTimeout(function () {
                 window.location = "./login.html";
-            }, 1000);
+            }, 500);
         }
 
     }
@@ -164,7 +166,7 @@
 
         if (contadorPergunta < 5) {
 
-            if (contadorPergunta == 1 && radioInputs.length < 1) {
+            if (contadorPergunta >= 1 && radioInputs.length < 1) {
                 alert("Selecione uma alternativa para prosseguir!");
                 return;
             }
@@ -184,6 +186,12 @@
             contadorRespostas = i;
 
             contadorPergunta++;
+
+            // Iterando sobre a lista de inputs do tipo radio que foi capturada numa variável anterior e desmarcando todos eles, 
+            // acessando a propriedade checked deles e a tornando false.
+            for (var i = 0; i < radioInputs.length; i++) {
+                radioInputs[i].checked = false;
+            }
 
 
         } else {
@@ -215,25 +223,25 @@
 
     function pontuarResposta() {
 
-        if (contadorPergunta == 1 && respostaUser == gabaritoAx[0]) {
+        if (contadorPergunta == 1 && respostaUser == gabaritoAx[0])
             contadorAcertos++;
-        }
 
-        if (contadorPergunta == 2 && respostaUser == gabaritoAx[1]) {
-            contadorAcertos++;
-        }
 
-        if (contadorPergunta == 3 && respostaUser == gabaritoAx[2]) {
+        if (contadorPergunta == 2 && respostaUser == gabaritoAx[1])
             contadorAcertos++;
-        }
 
-        if (contadorPergunta == 4 && respostaUser == gabaritoAx[3]) {
-            contadorAcertos++;
-        }
 
-        if (contadorPergunta == 5 && respostaUser == gabaritoAx[4]) {
+        if (contadorPergunta == 3 && respostaUser == gabaritoAx[2])
             contadorAcertos++;
-        }
+
+
+        if (contadorPergunta == 4 && respostaUser == gabaritoAx[3])
+            contadorAcertos++;
+
+
+        if (contadorPergunta == 5 && respostaUser == gabaritoAx[4])
+            contadorAcertos++;
+
         respostaUser = 0;
 
     }

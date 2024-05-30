@@ -11,7 +11,8 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body onload="refreshRanking(); refreshGrafico();"> <!-- Chamando duas funções no ato de carregamento do body na tela do usuário, ou seja, quase que instantaneamente -->
+<body onload="refreshRanking(); refreshGrafico();">
+    <!-- Chamando duas funções no ato de carregamento do body na tela do usuário, ou seja, quase que instantaneamente -->
     <div class="header">
         <div class="container_header">
             <a href="./index.html"><img src="../src/img/LoL_Icon_Flat_GOLD.svg" class="icone_logo"></a>
@@ -115,7 +116,7 @@
         return false;
     }
 
-    function fetchGrafico() { 
+    function fetchGrafico() {
 
         fetch("/estatisticas/jogadores", {
             method: "GET",
@@ -163,12 +164,24 @@
         for (var i = 0; i < ranking.length; i++) { // For que vai de 0 até o tamanho do vetor retornado pelo banco, similar a um forEach.
             var usuario = ranking[i]; // Variável para auxiliar na consumação dos dados mais a frente
 
-            container_ranking.innerHTML += `
+            var porcentagemAcertos = (usuario.acertos / 5) * 100; // Cálculo da porcentagem dos acertos do usuário
+
+            if (porcentagemAcertos <= 40) {
+                container_ranking.innerHTML += `
             <div class="usuario_ranking"><span style="justify-self: flex-start;">${i + 1}º Lugar</span>Usuário:<span
-                            style="color: aquamarine; margin-left: -10px;">${usuario.nome}</span> Acertos: ${usuario.acertos}/5
-                        <span>-</span><span style="color: aquamarine;">(${(usuario.acertos / 5) * 100}%)</span>
+                            style="color: aquamarine; margin-left: -10px;">${usuario.nome}</span> Acertos: <span style="color: aquamarine;">${usuario.acertos}/5</span>
+                        <span>-</span><span style="color: red;">(${porcentagemAcertos}%)</span>
             </div>
-        `; // Geração efetiva dos elementos dentro da lista, como está limitado a 10 pela controller, o limite sempre será 10, mas é algo suficientemente flexível no código
+        `;
+            } else {
+                container_ranking.innerHTML += `
+                <div class="usuario_ranking"><span style="justify-self: flex-start;">${i + 1}º Lugar</span>Usuário:<span
+                                style="color: aquamarine; margin-left: -10px;">${usuario.nome}</span> Acertos: <span style="color: aquamarine;">${usuario.acertos}/5</span>
+                            <span>-</span><span style="color: aquamarine;">(${porcentagemAcertos}%)</span>
+                </div>
+            `; // Geração efetiva dos elementos dentro da lista, como está limitado a 10 pela controller, o limite sempre será 10, mas é algo suficientemente flexível no código
+            }
+
         }
     }
 

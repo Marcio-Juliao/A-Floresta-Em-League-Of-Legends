@@ -96,6 +96,7 @@
     font-family: BeaufortBold;
     font-size: 30px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 /* Quiz */
@@ -216,6 +217,7 @@
     font-family: BeaufortBold;
     font-size: 30px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 /* Final do Quiz */
@@ -264,5 +266,6 @@
     font-family: BeaufortBold;
     font-size: 30px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
