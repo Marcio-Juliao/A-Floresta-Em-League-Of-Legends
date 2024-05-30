@@ -143,6 +143,9 @@
             // Função próxima pergunta para exibir o conteúdo da pergunta
             proxima_pergunta();
 
+            verifPeriodica();
+
+
         } else { // Caso não haja um usuário logado, pede-se para que o usuário faça login
             alert(`Faça login ou crie uma conta para poder fazer o quiz! \n \n \t Redirecionando para a página de login...`);
             setTimeout(function () {
@@ -287,7 +290,21 @@
         return false;
     }
 
+    function verifPeriodica() {
 
+        setInterval(function () {
+            var NOME_USUARIOv = sessionStorage.NOME_USUARIO;
+            var EMAIL_USUARIOv = sessionStorage.EMAIL_USUARIO;
+            var ID_USUARIOv = sessionStorage.ID_USUARIO;
+            if (!NOME_USUARIOv || !EMAIL_USUARIOv || !ID_USUARIOv) {
+
+                setTimeout(function () {
+                    alert(`Usuário desconectado! Logue novamente...`);
+                    window.location = "./login.html";
+                }, 500)
+            }
+        }, 1000)
+    }
 
 
 </script>

@@ -104,7 +104,7 @@
         var emailVar = input_email.value;
         var senhaVar = input_senha.value;
         var confirmacaoSenhaVar = input_repetir_senha.value;
-        var jogouLolVar = parseInt((document.querySelector('input[name="input_radio"]:checked')).value); 
+        var jogouLolVar = parseInt((document.querySelector('input[name="input_radio"]:checked')).value);
         // O campo do banco espera um inteiro, então usei a função parseInt() (poderia ser a number() também)
         // Depois, seleciono o valor que aquele radio tem (pode ser 0 ou 1)
 
@@ -133,7 +133,7 @@
                 if (respostaJson.email) {
                     console.log("Já cadastrado com esse email!");
                     alert("Email já cadastrado!");
-                    return false;
+                    return false; // matando a função aqui, para que não continue
                 } else {
                     console.log(`Cadastro ok, não existe nenhum outro email: '${emailVar}' cadastrado `);
 
