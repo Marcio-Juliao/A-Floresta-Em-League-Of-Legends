@@ -77,7 +77,44 @@ function cadastrar(req, res) {
     }
 }
 
+function autenticarCadastro(req, res) {
+    var email = req.body.emailServer;
+
+    if (email == undefined) {
+        res.status(400).send("Seu email está undefined!");
+    } else {
+
+        usuarioModel.autenticarCadastro(email)
+            .then(
+                function (resultadoAutenticarCadastro) {
+                    console.log(`\nResultados encontrados: ${resultadoAutenticarCadastro.length}`);
+                    console.log(`Resultados: ${JSON.stringify(resultadoAutenticarCadastro)}`); // transforma JSON em String
+
+                    console.log(resultadoAutenticarCadastro);
+
+                    if (resultadoAutenticarCadastro.length > 0) { // Caso haja um usuário cadastrado com este email, ele manda o email que já está cadastrado
+                                    res.json({
+                                        email: resultadoAutenticarCadastro[0].email
+                                    });  
+                    } else { // Caso não haja um usuário cadastrado com este email, ele manda vazio
+                        res.json({
+                            email: ""
+                        });  
+                    }
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log("\nHouve um erro ao realizar a autenticacao do cadastro! Erro: ", erro.sqlMessage);
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    autenticarCadastro
 }

@@ -99,53 +99,77 @@
     var inputRepetirSenha = "";
     var inputJogouLOL = "";
 
-    
     function cadastrar() {
-
         var nomeVar = input_nome.value;
         var emailVar = input_email.value;
         var senhaVar = input_senha.value;
         var confirmacaoSenhaVar = input_repetir_senha.value;
-        var jogouLolVar = parseInt((document.querySelector('input[name="input_radio"]:checked')).value);
-        if (
-            nomeVar == "" ||
-            emailVar == "" ||
-            senhaVar == "" ||
-            confirmacaoSenhaVar == ""
-        ) {
+        var jogouLolVar = parseInt((document.querySelector('input[name="input_radio"]:checked')).value); 
+        // O campo do banco espera um inteiro, então usei a função parseInt() (poderia ser a number() também)
+        // Depois, seleciono o valor que aquele radio tem (pode ser 0 ou 1)
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
             alert("Preencha todos os campos!");
             return false;
         }
 
-        fetch("/usuarios/cadastrar", {
+        if (senhaVar != confirmacaoSenhaVar) {
+            alert("Verifique se as duas senhas são iguais!");
+            return false;
+        }
+
+        // Primeiro, autenticar o email para verificar se já existe
+        fetch("/usuarios/autenticarCadastro", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                nomeServer: nomeVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-                jogouLolServer: jogouLolVar
+                emailServer: emailVar
             }),
         })
             .then(function (resposta) {
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-
-                        alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
-
-                    setTimeout(() => {
-                        window.location = "./login.html";
-                    }, "2000");
-
+                var respostaJson = resposta.json();
+                if (respostaJson.email) {
+                    console.log("Já cadastrado com esse email!");
+                    alert("Email já cadastrado!");
+                    return false;
                 } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
+                    console.log(`Cadastro ok, não existe nenhum outro email: '${emailVar}' cadastrado `);
+
+                    // Se o email não está cadastrado, proceder com o cadastro
+                    fetch("/usuarios/cadastrar", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            nomeServer: nomeVar,
+                            emailServer: emailVar,
+                            senhaServer: senhaVar,
+                            jogouLolServer: jogouLolVar
+                        }),
+                    })
+                        .then(function (resposta) {
+                            if (resposta.ok) {
+                                alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
+
+                                setTimeout(() => {
+                                    window.location = "./login.html";
+                                }, 2000);
+                            } else {
+                                throw "Houve um erro ao tentar realizar o cadastro!";
+                            }
+                        })
+                        .catch(function (erro) {
+                            console.log(`#ERRO: ${erro}`);
+                        });
+
+                    return false;
                 }
             })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
+            .catch(function (erro) {
+                console.log(`#ERRO: ${erro}`);
             });
 
         return false;
