@@ -68,7 +68,7 @@ function cadastrar(req, res) {
 
                 if (resultadoAutenticarCadastro.length > 0) { // Caso haja um usuário cadastrado com este email, ele manda o email que já está cadastrado
                     console.log("Já há um usuário cadastrado com esse email!");
-                    res.status(409).send("Email já cadastrado");
+                    res.status(409).send("Email já cadastrado"); // Retornando http status code 409 (conflict) caso já haja um usuário com esse email
                 } else { // Caso não haja um usuário cadastrado com este email, ele manda vazio
                     usuarioModel.cadastrar(nome, email, senha, jogouLol)
                     .then(
