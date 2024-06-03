@@ -11,6 +11,26 @@ function enviarRelatorio(id, acertos) {
     return database.executar(instrucaoSql);
 }
 
+function receberPerguntas() {
+
+    var instrucaoSql = `
+        SELECT texto FROM questao;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function receberRespostas() {
+
+    var instrucaoSql = `
+        SELECT texto FROM resposta;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
-    enviarRelatorio
+    enviarRelatorio,
+    receberPerguntas,
+    receberRespostas
 };
