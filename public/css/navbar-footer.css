@@ -74,6 +74,12 @@
     font-size: 22px;
     font-family: SpiegelBold;
 }
+.navbar a{
+    transition: 0.3s;
+}
+.navbar a:hover {
+    color: #F4BB72;
+}
 
 /* Rodapé */
 

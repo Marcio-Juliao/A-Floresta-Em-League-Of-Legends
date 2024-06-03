@@ -117,8 +117,7 @@
             alert("Verifique se as duas senhas são iguais!");
             return false;
         }
-
-        // Se o email não está cadastrado, proceder com o cadastro
+        
         fetch("/usuarios/cadastrar", {
             method: "POST",
             headers: {
