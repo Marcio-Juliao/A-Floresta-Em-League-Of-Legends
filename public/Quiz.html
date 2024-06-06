@@ -43,7 +43,7 @@
         <div class="banner_quiz">
             <div class="card_iniciar_quiz" id="card_iniciar_quiz">
                 <p class="titulo_iniciar_quiz">Iniciar Quiz</p>
-                <p class="texto_iniciar_quiz">5 Perguntas</p>
+                <p class="texto_iniciar_quiz" id="qtd_perguntas"></p>
                 <button class="botao_iniciar_quiz" id="botao_iniciar_quiz" onclick="iniciar_quiz()">Iniciar
                     Quiz</button>
             </div>
@@ -54,11 +54,7 @@
                         <p class="texto_quiz" id="texto_quiz"></p>
                     </div>
                     <div class="container_radio_quiz">
-                        <div class="radio_quiz_input">
-                            <input type="radio" name="input_radio" id="input_radio1" class="radio_quiz" value="1">
-                            <input type="radio" name="input_radio" id="input_radio2" class="radio_quiz" value="2">
-                            <input type="radio" name="input_radio" id="input_radio3" class="radio_quiz" value="3">
-                            <input type="radio" name="input_radio" id="input_radio4" class="radio_quiz" value="4">
+                        <div class="radio_quiz_input" id="radio_quiz_input">
                         </div>
                         <div class="radio_quiz_resposta">
                             <p id="resposta_1"></p>
@@ -152,11 +148,15 @@
     // var listaPerguntas = ['Qual é a origem do poder mágico que concede vida e forma ao Maokai, o Ente Sinistro, em League of Legends?', 'Como os feitos de Maokai e Ivern em League of Legends podem servir de inspiração para a preservação da natureza e conscientização ambiental?', 'Como as ações de Maokai e Ivern em League of Legends refletem valores de conservação ambiental e podem inspirar os jogadores a se envolverem na proteção da natureza?', 'Qual era o nome de Ivern antes de sua transformação?', 'Como Maokai preserva a última água sagrada?'];
     // var listaRespostas = ['Uma maldição antiga lançada por uma feiticeira poderosa.', 'As águas abençoadas das ilhas das bençãos.', 'A energia de uma árvore ancestral, absorvida durante uma batalha épica.', 'A influência de um artefato mágico criado pelos ancestrais yordles.', 'Ivern, após destruir um bosque sagrado, se transforma e passa a proteger a natureza e suas criaturas.', 'Ivern desenvolve tecnologias para a urbanização de áreas florestais.', 'Maokai lidera um exército para conquistar territórios florestais.', 'Maokai e Ivern se unem para desenvolver indústrias.', 'Maokai colabora com empresas que exploram recursos naturais de forma descontrolada.', 'Maokai usa sua força para destruir áreas florestais em busca de vingança.', 'Maokai e Ivern se unem para poluir o ambiente, aumentando os problemas ambientais no jogo.', 'Ivern trabalha para proteger a vida selvagem, promovendo a preservação da natureza.', 'Ivern, O Pai do Verde', 'Ivern, o Amável', 'Ivern, o Terrível', 'Ivern, o Conquistador', 'Guardando-a num lugar escondido de tudo e todos', 'No fundo de seu coração', 'Nas nascentes das águas tonificantes sagradas', 'Junto do coveiro, Yorick'];
 
-    var listaGabarito = [1, 4, 11, 14, 17]; //Indica as posições das respostas corretas, no vetor "listaRespostas".
+    var listaGabarito = [1, 4, 11, 14, 17]; //Indica as posições das respostas corretas, no vetor "listaRespostas". -- também é o id do banco de dados
     var gabaritoAx = [2, 1, 4, 3, 2]; // Indica os values dos radios corretos em ordem de pergunta.
 
     var listaPerguntas = [];
     var listaRespostas = [];
+
+    var totalRespostas = [];
+    var gabaritoId = [];
+    var is_Correta = [];
 
     var qtdRespostas = 0;
 
@@ -188,6 +188,8 @@
                         listaPerguntas.push(json[i].texto);
                     }
 
+                    qtd_perguntas.innerHTML = `${listaPerguntas.length} perguntas`;
+
                 });
                 if (resposta.ok) {
                     return true;
@@ -211,9 +213,19 @@
 
                     for (var i = 0; i < json.length; i++) {
                         listaRespostas.push(json[i].texto);
+                        totalRespostas.push(json[i].idResposta);
+                        is_Correta.push(json[i].is_Correta);
+
                     }
 
                     qtdRespostas = listaRespostas.length;
+
+                    for (var index = 0; index < json.length; index++) {
+                        if (is_Correta[index] == 1) {
+                            gabaritoId.push(totalRespostas[index]);
+                        }
+
+                    }
 
 
                 });
@@ -281,9 +293,15 @@
             titulo_quiz.innerHTML = `Pergunta ${contadorPergunta + 1}`;
             texto_quiz.innerHTML = listaPerguntas[contadorPergunta];
 
+            var respostaInput = document.getElementById('radio_quiz_input');
+            respostaInput.innerHTML = "";
+
             for (var i = contadorRespostas; i < contadorRespostas + 4 && i < qtdRespostas; i++) {
                 var resposta = document.getElementById('resposta_' + (i - contadorRespostas + 1));
                 resposta.innerHTML = listaRespostas[i];
+                respostaInput.innerHTML += `
+                <input type="radio" name="input_radio" id="input_radio" class="radio_quiz" value="${totalRespostas[i]}">
+                `;
             }
             contadorRespostas = i;
 
@@ -324,24 +342,24 @@
     }
 
     function pontuarResposta() {
-
-        if (contadorPergunta == 1 && respostaUser == gabaritoAx[0])
+                                    // Se a pergunta for 1 e a resposta for a certa
+        if (contadorPergunta == 1 && respostaUser == gabaritoId[0])
             contadorAcertos++;
 
 
-        if (contadorPergunta == 2 && respostaUser == gabaritoAx[1])
+        if (contadorPergunta == 2 && respostaUser == gabaritoId[1])
             contadorAcertos++;
 
 
-        if (contadorPergunta == 3 && respostaUser == gabaritoAx[2])
+        if (contadorPergunta == 3 && respostaUser == gabaritoId[2])
             contadorAcertos++;
 
 
-        if (contadorPergunta == 4 && respostaUser == gabaritoAx[3])
+        if (contadorPergunta == 4 && respostaUser == gabaritoId[3])
             contadorAcertos++;
 
 
-        if (contadorPergunta == 5 && respostaUser == gabaritoAx[4])
+        if (contadorPergunta == 5 && respostaUser == gabaritoId[4])
             contadorAcertos++;
 
         respostaUser = 0;

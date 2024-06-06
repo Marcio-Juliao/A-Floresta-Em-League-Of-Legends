@@ -90,6 +90,10 @@
     cursor: default;
 }
 
+.navbar #li_nomeUser {
+    font-family: BeaufortBoldItalic;
+}
+
 /* Rodapé */
 
 .linha {

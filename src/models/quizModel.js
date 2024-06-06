@@ -23,7 +23,7 @@ function receberPerguntas() {
 function receberRespostas() {
 
     var instrucaoSql = `
-        SELECT texto FROM resposta;
+        SELECT idResposta, is_Correta, texto FROM Resposta;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
