@@ -86,6 +86,10 @@
     color: #F4BB72;
 }
 
+.navbar #li_nomeUser:hover {
+    cursor: default;
+}
+
 /* Rodapé */
 
 .linha {

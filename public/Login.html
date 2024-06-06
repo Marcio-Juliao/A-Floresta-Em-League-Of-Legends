@@ -133,7 +133,6 @@
             if (sessionStorage.EMAIL_USUARIO == emailVar) {
                 if (confirm(`Você já está logado com o Email: ` + sessionStorage.EMAIL_USUARIO + "! \n\n Deseja encerrar a sessão?")) {
                     deslogar();
-                    alert("Sessão encerrada. Por favor, tente fazer login novamente.");
                     return false;
                 } else {
                     return false;
@@ -170,11 +169,7 @@
                     sessionStorage.ID_USUARIO = json.id
 
                     atualizarNavSessao();
-
-                    setTimeout(function () {
-                        alert("Logado com sucesso, redirecionando...");
-                        window.location = "./Quiz.html";
-                    }, 1000);
+                    alert("Logado com sucesso!");
 
                 });
 
