@@ -74,6 +74,11 @@
     font-size: 22px;
     font-family: SpiegelBold;
 }
+
+.navbar li:hover {
+    cursor: pointer;
+}
+
 .navbar a{
     transition: 0.3s;
 }

@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="../css/navbar-footer.css">
 </head>
 
-<body>
+<body onload="atualizarNavSessao()">
     <div class="header">
         <div class="container_header">
             <a href="./index.html"><img src="../src/img/LoL_Icon_Flat_GOLD.svg" class="icone_logo"></a>
-            <ul class="navbar">
+            <ul class="navbar" id="ul_nav">
                 <a href="./Saiba_Mais.html">
                     <li>Saiba Mais</li>
                 </a>
@@ -29,6 +29,13 @@
                     <a href="./Cadastrar.html">
                         <li>Cadastrar</li>
                     </a>
+                    <li id="li_divisoria" style="display: none;">|</li>
+                    <li id="li_nomeUser" style="display: none; color: aquamarine;">Nenhum</li>
+                    <li id="li_sair" style="display: none;">
+                        <a onclick="deslogar()">
+                            Sair
+                        </a>
+                    </li>
             </ul>
         </div>
     </div>
@@ -80,7 +87,37 @@
 
 <script>
 
-    // sessionStorage.clear(); -> Comando para "deslogar"
+    // sessionStorage.clear() // -> Comando para "deslogar" (limpar o session storage)
+    function deslogar() {
+        sessionStorage.clear();
+        atualizarNavSessao();
+        alert("Sessão encerrada!");
+    }
+
+    function atualizarNavSessao() {
+        var liNomeUserId = li_nomeUser;
+        var liNomeUserElement = document.getElementById('li_nomeUser');
+
+        if (sessionStorage.EMAIL_USUARIO && sessionStorage.NOME_USUARIO && sessionStorage.ID_USUARIO) {
+
+            liNomeUserId.style.display = 'block';
+            li_divisoria.style.display = 'block';
+            li_sair.style.display = 'block';
+
+            liNomeUserId.innerHTML = `${sessionStorage.NOME_USUARIO}`;
+        } else {
+
+            if (liNomeUserElement) {
+
+                liNomeUserId.style.display = 'none';
+                li_divisoria.style.display = 'none';
+                li_sair.style.display = 'none';
+
+                liNomeUserElement.innerHTML = "Nenhum";
+                console.log("Nenhum usuário logado!");
+            }
+        }
+    }
 
     function entrar() {
 
@@ -88,8 +125,23 @@
         var senhaVar = input_senha.value;
 
         if (emailVar == "" || senhaVar == "") {
-            alert("(Mensagem de erro para todos os campos em branco)");
+            alert("Verifique se os campos estão preenchidos corretamente!");
             return false;
+        }
+
+        if (sessionStorage.EMAIL_USUARIO || sessionStorage.NOME_USUARIO || sessionStorage.ID_USUARIO) {
+            if (sessionStorage.EMAIL_USUARIO == emailVar) {
+                if (confirm(`Você já está logado com o Email: ` + sessionStorage.EMAIL_USUARIO + "! \n\n Deseja encerrar a sessão?")) {
+                    deslogar();
+                    alert("Sessão encerrada. Por favor, tente fazer login novamente.");
+                    return false;
+                } else {
+                    return false;
+                }
+            } else {
+                alert("Sessão anterior encerrada. Fazendo logout do usuário anterior.");
+                deslogar();
+            }
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -116,6 +168,8 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id
+
+                    atualizarNavSessao();
 
                     setTimeout(function () {
                         alert("Logado com sucesso, redirecionando...");

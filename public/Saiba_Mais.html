@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="../css/navbar-footer.css">
 </head>
 
-<body>
+<body onload="atualizarNavSessao();">
     <div class="header">
         <div class="container_header">
             <a href="./index.html"><img src="../src/img/LoL_Icon_Flat_GOLD.svg" class="icone_logo"></a>
-            <ul class="navbar">
+            <ul class="navbar" id="ul_nav">
                 <a href="./Saiba_Mais.html">
                     <li>Saiba Mais</li>
                 </a>
@@ -29,6 +29,13 @@
                     <a href="./Cadastrar.html">
                         <li>Cadastrar</li>
                     </a>
+                    <li id="li_divisoria" style="display: none;">|</li>
+                    <li id="li_nomeUser" style="display: none; color: aquamarine;">Nenhum</li>
+                    <li id="li_sair" style="display: none;">
+                        <a onclick="deslogar()">
+                            Sair
+                        </a>
+                    </li>
             </ul>
         </div>
     </div>
@@ -41,18 +48,31 @@
     </div>
     <div class="container_texto_meio">
         <p>
-            O projeto "A Floresta em League of Legends" nasce da profunda admiração do criador pela rica história de League of Legends, bem como sua capacidade única de impactar positivamente a vida real. Este projeto ambicioso e inspirador tem como principal objetivo conscientizar o público sobre a importância vital da preservação das florestas e da natureza. Com um tema lúdico e envolvente, busca gerar um engajamento significativo e, assim, fazer uma diferença real e tangível.
+            O projeto "A Floresta em League of Legends" nasce da profunda admiração do criador pela rica história de
+            League of Legends, bem como sua capacidade única de impactar positivamente a vida real. Este projeto
+            ambicioso e inspirador tem como principal objetivo conscientizar o público sobre a importância vital da
+            preservação das florestas e da natureza. Com um tema lúdico e envolvente, busca gerar um engajamento
+            significativo e, assim, fazer uma diferença real e tangível.
         </p>
         <br><br>
         <p>
-            O site do projeto é um convite para uma jornada de descoberta e aprendizado. Ele apresenta um quiz interativo que habilmente mescla o vasto universo de League of Legends com temas de preservação ambiental, desafiando os visitantes a testarem seu conhecimento e refletirem sobre a importância da natureza. Além disso, para adicionar um elemento de competição saudável e motivadora, o site possui um sistema de ranking. Este ranking monitora e exibe as top 10 maiores pontuações alcançadas pelos usuários, incentivando a participação contínua e o aprimoramento do conhecimento.
+            O site do projeto é um convite para uma jornada de descoberta e aprendizado. Ele apresenta um quiz
+            interativo que habilmente mescla o vasto universo de League of Legends com temas de preservação ambiental,
+            desafiando os visitantes a testarem seu conhecimento e refletirem sobre a importância da natureza. Além
+            disso, para adicionar um elemento de competição saudável e motivadora, o site possui um sistema de ranking.
+            Este ranking monitora e exibe as top 10 maiores pontuações alcançadas pelos usuários, incentivando a
+            participação contínua e o aprimoramento do conhecimento.
         </p>
         <br><br>
         <p>
-            Ao explorar "A Floresta em League of Legends", os visitantes são transportados para um mundo onde o entretenimento e a educação se encontram, promovendo uma consciência ecológica de maneira divertida e memorável. Este projeto não apenas celebra a riqueza narrativa de League of Legends, mas também serve como um poderoso lembrete da importância de cuidarmos do nosso planeta.
+            Ao explorar "A Floresta em League of Legends", os visitantes são transportados para um mundo onde o
+            entretenimento e a educação se encontram, promovendo uma consciência ecológica de maneira divertida e
+            memorável. Este projeto não apenas celebra a riqueza narrativa de League of Legends, mas também serve como
+            um poderoso lembrete da importância de cuidarmos do nosso planeta.
         </p>
         <br><br>
-        <p>Como responder o quiz? Cadstre-se e faça login no site institucional para poder responder o quiz e, se estiver no top 10, ter seu nome exibida para todos os visitantes do site.</p>
+        <p>Como responder o quiz? Cadstre-se e faça login no site institucional para poder responder o quiz e, se
+            estiver no top 10, ter seu nome exibida para todos os visitantes do site.</p>
     </div>
     <div class="linha"></div>
     <div class="div_footer">
@@ -83,3 +103,39 @@
 </body>
 
 </html>
+
+<script>
+
+    // sessionStorage.clear() // -> Comando para "deslogar" (limpar o session storage)
+    function deslogar() {
+        sessionStorage.clear();
+        atualizarNavSessao();
+        alert("Sessão encerrada!");
+    }
+
+    function atualizarNavSessao() {
+        var liNomeUserId = li_nomeUser;
+        var liNomeUserElement = document.getElementById('li_nomeUser');
+
+        if (sessionStorage.EMAIL_USUARIO && sessionStorage.NOME_USUARIO && sessionStorage.ID_USUARIO) {
+
+            liNomeUserId.style.display = 'block';
+            li_divisoria.style.display = 'block';
+            li_sair.style.display = 'block';
+
+            liNomeUserId.innerHTML = `${sessionStorage.NOME_USUARIO}`;
+        } else {
+
+            if (liNomeUserElement) {
+
+                liNomeUserId.style.display = 'none';
+                li_divisoria.style.display = 'none';
+                li_sair.style.display = 'none';
+
+                liNomeUserElement.innerHTML = "Nenhum";
+                console.log("Nenhum usuário logado!");
+            }
+        }
+    }
+
+</script>

@@ -13,11 +13,11 @@
 
 </head>
 
-<body>
+<body onload="atualizarNavSessao()">
     <div class="header">
         <div class="container_header">
             <a href="./index.html"><img src="../src/img/LoL_Icon_Flat_GOLD.svg" class="icone_logo"></a>
-            <ul class="navbar">
+            <ul class="navbar" id="ul_nav">
                 <a href="./Saiba_Mais.html">
                     <li>Saiba Mais</li>
                 </a>
@@ -26,13 +26,19 @@
                 </a>
                 <a href="./Estatisticas.html">
                     <li>Estatísticas</li>
-                </a>
-                <a href="./Login.html">
-                    <li>Login</li>
-                </a>
-                <a href="./Cadastrar.html">
-                    <li>Cadastrar</li>
-                </a>
+                    <a href="./Login.html">
+                        <li>Login</li>
+                    </a>
+                    <a href="./Cadastrar.html">
+                        <li>Cadastrar</li>
+                    </a>
+                    <li id="li_divisoria" style="display: none;">|</li>
+                    <li id="li_nomeUser" style="display: none; color: aquamarine;">Nenhum</li>
+                    <li id="li_sair" style="display: none;">
+                        <a onclick="deslogar()">
+                            Sair
+                        </a>
+                    </li>
             </ul>
         </div>
     </div>
@@ -93,6 +99,38 @@
 
 <script>
 
+    // sessionStorage.clear() // -> Comando para "deslogar" (limpar o session storage)
+    function deslogar() {
+        sessionStorage.clear();
+        atualizarNavSessao();
+        alert("Sessão encerrada!");
+    }
+
+    function atualizarNavSessao() {
+        var liNomeUserId = li_nomeUser;
+        var liNomeUserElement = document.getElementById('li_nomeUser');
+
+        if (sessionStorage.EMAIL_USUARIO && sessionStorage.NOME_USUARIO && sessionStorage.ID_USUARIO) {
+
+            liNomeUserId.style.display = 'block';
+            li_divisoria.style.display = 'block';
+            li_sair.style.display = 'block';
+
+            liNomeUserId.innerHTML = `${sessionStorage.NOME_USUARIO}`;
+        } else {
+
+            if (liNomeUserElement) {
+
+                liNomeUserId.style.display = 'none';
+                li_divisoria.style.display = 'none';
+                li_sair.style.display = 'none';
+
+                liNomeUserElement.innerHTML = "Nenhum";
+                console.log("Nenhum usuário logado!");
+            }
+        }
+    }
+
     var inputEmail = "";
     var inputNome = "";
     var inputSenha = "";
@@ -109,7 +147,7 @@
         // Depois, seleciono o valor que aquele radio tem (pode ser 0 ou 1)
 
         if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
-            alert("Preencha todos os campos!");
+            alert("Verifique se os campos estão preenchidos corretamente!");
             return false;
         }
 
@@ -117,7 +155,7 @@
             alert("Verifique se as duas senhas são iguais!");
             return false;
         }
-        
+
         fetch("/usuarios/cadastrar", {
             method: "POST",
             headers: {
@@ -136,7 +174,7 @@
 
                     setTimeout(() => {
                         window.location = "./login.html";
-                    }, 2000);
+                    }, 500);
                 } else if (resposta.status === 409) { // Esperando o status code 409 caso haja mais de um usuário com este email no banco de dados
                     alert("Já há um usuário cadastrado com esse email!");
                 } else {

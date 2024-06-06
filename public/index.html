@@ -13,11 +13,11 @@
 
 </head>
 
-<body>
+<body onload="atualizarNavSessao()">
     <div class="header">
         <div class="container_header">
             <a href="./index.html"><img src="../src/img/LoL_Icon_Flat_GOLD.svg" class="icone_logo"></a>
-            <ul class="navbar">
+            <ul class="navbar" id="ul_nav">
                 <a href="./Saiba_Mais.html">
                     <li>Saiba Mais</li>
                 </a>
@@ -32,6 +32,13 @@
                     <a href="./Cadastrar.html">
                         <li>Cadastrar</li>
                     </a>
+                    <li id="li_divisoria" style="display: none;">|</li>
+                    <li id="li_nomeUser" style="display: none; color: aquamarine;">Nenhum</li>
+                    <li id="li_sair" style="display: none;">
+                        <a onclick="deslogar()">
+                            Sair
+                        </a>
+                    </li>
             </ul>
         </div>
     </div>
@@ -49,7 +56,21 @@
         <div class="container_texto_mundo">
             <div class="texto_meio">
                 <p class="titulo_meio"> O Mundo </p>
-                <p class="conteudo_meio">League of Legends se passa no mundo fictício de Runeterra, um lugar de rica diversidade cultural e mágica, onde diversas regiões e facções estão em constante conflito. A história atual do jogo se foca nas tensões e alianças entre essas regiões, cada uma lutando por poder, sobrevivência e dominância. A cidade de Piltover, conhecida como a "Cidade do Progresso", e sua vizinha sombria, Zaun, enfrentam desafios tecnológicos e sociais enquanto lidam com a inovação e a corrupção. Em Ionia, uma terra de misticismo e tradição, as pessoas lutam para reconstruir suas vidas após a invasão brutal de Noxus, uma nação militarista e expansionista. No norte gelado de Freljord, tribos guerreiras como as de Ashe, Sejuani e Lissandra competem pelo controle em um ambiente hostil e implacável. Shurima, um vasto deserto que foi outrora um poderoso império, vê figuras como Azir tentando restaurar sua antiga glória. Enquanto isso, as Ilhas das Sombras espalham terror e escuridão, com entidades sobrenaturais ameaçando toda Runeterra. Os campeões, personagens jogáveis com habilidades únicas e histórias complexas, interagem nesse cenário dinâmico, cada um com suas motivações pessoais e histórias de fundo que influenciam os eventos em curso. O enredo contínuo de League of Legends é aprofundado através de atualizações regulares, eventos especiais e expansões, mantendo a narrativa viva e evolutiva.</p>
+                <p class="conteudo_meio">League of Legends se passa no mundo fictício de Runeterra, um lugar de rica
+                    diversidade cultural e mágica, onde diversas regiões e facções estão em constante conflito. A
+                    história atual do jogo se foca nas tensões e alianças entre essas regiões, cada uma lutando por
+                    poder, sobrevivência e dominância. A cidade de Piltover, conhecida como a "Cidade do Progresso", e
+                    sua vizinha sombria, Zaun, enfrentam desafios tecnológicos e sociais enquanto lidam com a inovação e
+                    a corrupção. Em Ionia, uma terra de misticismo e tradição, as pessoas lutam para reconstruir suas
+                    vidas após a invasão brutal de Noxus, uma nação militarista e expansionista. No norte gelado de
+                    Freljord, tribos guerreiras como as de Ashe, Sejuani e Lissandra competem pelo controle em um
+                    ambiente hostil e implacável. Shurima, um vasto deserto que foi outrora um poderoso império, vê
+                    figuras como Azir tentando restaurar sua antiga glória. Enquanto isso, as Ilhas das Sombras espalham
+                    terror e escuridão, com entidades sobrenaturais ameaçando toda Runeterra. Os campeões, personagens
+                    jogáveis com habilidades únicas e histórias complexas, interagem nesse cenário dinâmico, cada um com
+                    suas motivações pessoais e histórias de fundo que influenciam os eventos em curso. O enredo contínuo
+                    de League of Legends é aprofundado através de atualizações regulares, eventos especiais e expansões,
+                    mantendo a narrativa viva e evolutiva.</p>
             </div>
         </div>
         <div class="container_img_mundo">
@@ -61,7 +82,15 @@
         <div class="container_texto_ods">
             <div class="texto_meio">
                 <p class="titulo_meio"> As ODS da ONU </p>
-                <p class="conteudo_meio">A preservação das florestas é essencial para a saúde do planeta e a sobrevivência da humanidade, conforme destacado pelo ODS 15 da ONU, que visa "assegurar a conservação, recuperação e uso sustentável de ecossistemas terrestres". O desmatamento, como o observado no Brasil, que perdeu 13% de sua cobertura florestal entre 2000 e 2020, ameaça transformar a Amazônia em um deserto dentro de 40 anos, resultando em perda de biodiversidade e destruição de habitats essenciais. Iniciativas culturais, como as histórias e personagens do jogo League of Legends, exemplificam como a mídia pode promover a conscientização ecológica de forma lúdica e engajante, demonstrando a urgência de proteger e restaurar nossos ecossistemas para um futuro sustentável.</p>
+                <p class="conteudo_meio">A preservação das florestas é essencial para a saúde do planeta e a
+                    sobrevivência da humanidade, conforme destacado pelo ODS 15 da ONU, que visa "assegurar a
+                    conservação, recuperação e uso sustentável de ecossistemas terrestres". O desmatamento, como o
+                    observado no Brasil, que perdeu 13% de sua cobertura florestal entre 2000 e 2020, ameaça transformar
+                    a Amazônia em um deserto dentro de 40 anos, resultando em perda de biodiversidade e destruição de
+                    habitats essenciais. Iniciativas culturais, como as histórias e personagens do jogo League of
+                    Legends, exemplificam como a mídia pode promover a conscientização ecológica de forma lúdica e
+                    engajante, demonstrando a urgência de proteger e restaurar nossos ecossistemas para um futuro
+                    sustentável.</p>
             </div>
         </div>
     </div>
@@ -151,3 +180,39 @@
 </body>
 
 </html>
+
+<script>
+
+    // sessionStorage.clear() // -> Comando para "deslogar" (limpar o session storage)
+    function deslogar() {
+        sessionStorage.clear();
+        atualizarNavSessao();
+        alert("Sessão encerrada!");
+    }
+
+    function atualizarNavSessao() {
+        var liNomeUserId = li_nomeUser;
+        var liNomeUserElement = document.getElementById('li_nomeUser');
+
+        if (sessionStorage.EMAIL_USUARIO && sessionStorage.NOME_USUARIO && sessionStorage.ID_USUARIO) {
+
+            liNomeUserId.style.display = 'block';
+            li_divisoria.style.display = 'block';
+            li_sair.style.display = 'block';
+
+            liNomeUserId.innerHTML = `${sessionStorage.NOME_USUARIO}`;
+        } else {
+
+            if (liNomeUserElement) {
+
+                liNomeUserId.style.display = 'none';
+                li_divisoria.style.display = 'none';
+                li_sair.style.display = 'none';
+
+                liNomeUserElement.innerHTML = "Nenhum";
+                console.log("Nenhum usuário logado!");
+            }
+        }
+    }
+
+</script>
