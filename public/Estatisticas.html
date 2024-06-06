@@ -47,7 +47,7 @@
                 <p class="titulo_estatisticas">Estatísticas Gerais</p>
                 <div class="container_estatisticas">
                     <p class="titulo_grafico">
-                        Proporção de Jogadores e Não Jogadores
+                        Porcentagem de Jogadores e Não Jogadores
                     </p>
                     <canvas id="GraficoBarras" class="grafico1_estatisticas"></canvas>
                 </div>
@@ -226,8 +226,17 @@
     function atualizarGrafico(dados) { // Esta função espera 1 parâmetro, que aqui se chamará "dados"
 
         const labels = ['Já Jogou', 'Nunca Jogou']; // Constante para definir os labels, que são fixamente apenas esses dois
-        var dadosGrafico = [dados[0], dados[1]]; // Separando os dados para o gráfico com base no parâmetro recebido por esta função
-        dadosGrafico = JSON.stringify(dadosGrafico); // Transformando os dados em formato JSON em string, para que possam ser interpretados
+        var dadosBrutos = [Number(dados[0].sim), Number(dados[0].nao)]; // Separando os dados para o gráfico com base no parâmetro recebido por esta função
+
+        var somaDadosGrafico = 0;
+
+        for (var i = 0; i < dadosBrutos.length; i++) {
+            somaDadosGrafico += dadosBrutos[i];
+        }
+
+        var dadosGrafico = [(Number((((dadosBrutos[0] / somaDadosGrafico) * 100)).toFixed(1))), Number(((dadosBrutos[1] / somaDadosGrafico)* 100).toFixed(1))]; // Cálculo da porcentagem dos dados para o gráfico
+
+        console.log("Soma dos dados do gráfico: " + somaDadosGrafico);
 
         if (chart) { // Verificando se um gráfico já existe, ou seja, se há conteúdo na variável -> Esse é o motivo da variável "chart" ser global
             chart.destroy(); // Destruindo o gráfico se a condição for cumprida
