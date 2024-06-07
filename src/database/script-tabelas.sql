@@ -124,3 +124,9 @@ INSERT INTO tentativa (fkUsuario, acertos) VALUES
 	(1, 3),
 	(3, 2),
 	(5, 3);
+
+	SELECT u.nome, t.acertos 
+    	FROM usuario u JOIN tentativa t
+            ON t.fkUsuario = u.idUsuario
+            ORDER BY t.acertos DESC
+            LIMIT ${limite};
