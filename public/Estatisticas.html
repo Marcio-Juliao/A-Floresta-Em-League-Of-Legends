@@ -199,33 +199,26 @@
     function atualizarRanking(ranking) { // Esta função espera um parãmetro que será chamado de "ranking"
         container_ranking.innerHTML = ''; // Em primeiro momento, limpa totalmente a lista do top10
 
-    
+        for (var i = 0; i < ranking.length; i++) { // For que vai de 0 até o tamanho do vetor retornado pelo banco, similar a um forEach.
+            var usuario = ranking[i]; // Variável para auxiliar na consumação dos dados mais a frente
 
-        if (ranking.length > 0) {
-            for (var i = 0; i < ranking.length; i++) { // For que vai de 0 até o tamanho do vetor retornado pelo banco, similar a um forEach.
-                var usuario = ranking[i]; // Variável para auxiliar na consumação dos dados mais a frente
-    
-                var porcentagemAcertos = (usuario.acertos / 5) * 100; // Cálculo da porcentagem dos acertos do usuário
-    
-                if (porcentagemAcertos <= 40) {
-                    container_ranking.innerHTML += `
+            var porcentagemAcertos = (usuario.acertos / 5) * 100; // Cálculo da porcentagem dos acertos do usuário
+            if (porcentagemAcertos <= 40) {
+                container_ranking.innerHTML += `
                 <div class="usuario_ranking"><span style="justify-self: flex-start;">${i + 1}º Lugar</span>Usuário:<span
                                 style="color: aquamarine; margin-left: -10px;">${usuario.nome}</span> Acertos: <span style="color: aquamarine;">${usuario.acertos}/5</span>
                             <span>-</span><span style="color: red;">(${porcentagemAcertos}%)</span>
                 </div>
             `;
-                } else {
-                    container_ranking.innerHTML += `
+            } else {
+                container_ranking.innerHTML += `
                     <div class="usuario_ranking"><span style="justify-self: flex-start;">${i + 1}º Lugar</span>Usuário:<span
                                     style="color: aquamarine; margin-left: -10px;">${usuario.nome}</span> Acertos: <span style="color: aquamarine;">${usuario.acertos}/5</span>
                                 <span>-</span><span style="color: aquamarine;">(${porcentagemAcertos}%)</span>
                     </div>
                 `; // Geração efetiva dos elementos dentro da lista, como está limitado a 10 pela controller, o limite sempre será 10, mas é algo suficientemente flexível no código
-                }
-    
             }
-        } else {
-            container_ranking.innerHTML += `<div class="usuario_ranking"><span style="color: #F4BB72;">Não houve nenhuma resposta até o momento!</span></div>`;
+
         }
     }
 
@@ -240,7 +233,7 @@
             somaDadosGrafico += dadosBrutos[i];
         }
 
-        var dadosGrafico = [(Number((((dadosBrutos[0] / somaDadosGrafico) * 100)).toFixed(1))), Number(((dadosBrutos[1] / somaDadosGrafico)* 100).toFixed(1))]; // Cálculo da porcentagem dos dados para o gráfico
+        var dadosGrafico = [(Number((((dadosBrutos[0] / somaDadosGrafico) * 100)).toFixed(1))), Number(((dadosBrutos[1] / somaDadosGrafico) * 100).toFixed(1))]; // Cálculo da porcentagem dos dados para o gráfico
 
         console.log("Soma dos dados do gráfico: " + somaDadosGrafico);
 
