@@ -173,7 +173,7 @@
                     alert("Cadastro realizado com sucesso! Redirecionando para tela de Login...");
 
                     setTimeout(() => {
-                        window.location = "./login.html";
+                        window.location = "./Login.html";
                     }, 500);
                 } else if (resposta.status === 409) { // Esperando o status code 409 caso haja mais de um usuário com este email no banco de dados
                     alert("Já há um usuário cadastrado com esse email!");
